@@ -19,4 +19,3 @@ module ReviseAuth
     end
   end
 end
-
