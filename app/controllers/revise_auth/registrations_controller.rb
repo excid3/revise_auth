@@ -20,7 +20,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
 
   def update
     if current_user.update(profile_params)
-      redirect_to profile_path, notice: "Account updated successfully."
+      redirect_to profile_path, notice: I18n.t("revise_auth.account_updated")
     else
       render :edit, status: :unprocessable_entity
     end

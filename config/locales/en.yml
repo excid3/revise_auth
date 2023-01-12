@@ -1,6 +1,16 @@
 en:
   revise_auth:
     account_deleted: "Your account has been deleted."
+    account_updated: "Account updated successfully."
+
     invalid_email_or_password: "Invalid email or password."
     sign_up_or_login: "Sign up or log in to continue."
 
+    # Password changes
+    password_changed: "Your password has been changed successfully."
+    incorrect_password: "Your current password is incorrect. Please try again."
+
+    # Email confirmations
+    email_confirmed: "Your email address has been successfully confirmed."
+    email_confirm_failed: "Unable to confirm email address."
+    confirmation_email_sent: "A confirmation email has been sent to %{email}"

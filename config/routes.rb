@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     patch "profile/email", to: "email#update"
     patch "profile/password", to: "password#update"
 
+    # Email confirmation
     get "profile/email", to: "email#show"
 
     delete "logout", to: "sessions#destroy"
