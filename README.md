@@ -1,5 +1,8 @@
 # ReviseAuth
-Short description and motivation.
+
+[![Gem Version](https://badge.fury.io/rb/revise_auth.svg)](https://badge.fury.io/rb/revise_auth)
+
+A pure Ruby on Rails authentication system like Devise
 
 ## Usage
 How to use my plugin.
