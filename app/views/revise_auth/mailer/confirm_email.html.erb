@@ -1,0 +1,7 @@
+<p>Welcome <%= params[:user].unconfirmed_email %>!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', profile_email_url(confirmation_token: params[:user].confirmation_token) %></p>
+
+<p>This link will expire in 24 hours.</p>

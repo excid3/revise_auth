@@ -1,0 +1,71 @@
+<h1>Profile</h1>
+
+<%= form_with model: current_user, url: profile_email_path do |form| %>
+  <fieldset>
+    <legend>Change Email Address</legend>
+
+    <% if current_user.unconfirmed_email? %>
+      <p>Waiting for confirmation of <%= current_user.unconfirmed_email %></p>
+    <% end %>
+
+    <% if form.object.errors.any? %>
+      <ul>
+        <% form.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <p>Your email address is: <%= current_user.email %>
+    <p>To change your email, we will send a confirmation email to your new address to complete the change.</p>
+
+    <div>
+      <%= form.label :unconfirmed_email, "Email address" %>
+      <%= form.email_field :unconfirmed_email, required: true %>
+    </div>
+
+    <div>
+      <%= form.button "Save Changes" %>
+    </div>
+  </fieldset>
+<% end %>
+
+<%= form_with model: current_user, url: profile_password_path do |form| %>
+  <fieldset>
+    <legend>Change Password</legend>
+
+    <% if form.object.errors.any? %>
+      <ul>
+        <% form.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div>
+      <%= label_tag :current_password %>
+      <%= password_field_tag :current_password, nil, required: true %>
+    </div>
+
+    <div>
+      <%= form.label :password, "New password" %>
+      <%= form.password_field :password, required: true %>
+    </div>
+
+    <div>
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, required: true %>
+    </div>
+
+    <div>
+      <%= form.button "Save Changes" %>
+    </div>
+  </fieldset>
+<% end %>
+
+<%= form_with url: profile_path, method: :delete do |form| %>
+  <fieldset>
+    <legend>Delete my account</legend>
+    <%= form.button "Delete account", data: { turbo_confirm: "Are you sure?" } %>
+  </fieldset>
+<% end %>

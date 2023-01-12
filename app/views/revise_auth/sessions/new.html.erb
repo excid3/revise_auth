@@ -1,0 +1,17 @@
+<h1>Log in</h1>
+
+<%= form_with url: login_path do |form| %>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true, autofocus: true %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= form.button "Login" %>
+  </div>
+<% end %>

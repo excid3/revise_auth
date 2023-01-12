@@ -1,0 +1,6 @@
+en:
+  revise_auth:
+    account_deleted: "Your account has been deleted."
+    invalid_email_or_password: "Invalid email or password."
+    sign_up_or_login: "Sign up or log in to continue."
+
