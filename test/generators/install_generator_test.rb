@@ -9,7 +9,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
   setup :prepare_destination
 
   test "copy migration file" do
-    skip
+    # skip
     run_generator
 
     assert_migration "db/migrate/create_users.rb"

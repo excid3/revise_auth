@@ -15,6 +15,12 @@ module ReviseAuth
       def copy_model_file
         template "user.rb", "app/models/user.rb"
       end
+
+      private
+
+      def self.next_migration_number(path)
+        @migration_number = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i.to_s
+      end
     end
   end
 end
