@@ -3,7 +3,8 @@ module ReviseAuth
     attr_reader :request
 
     # Stub out helper_method
-    def self.helper_method(...); end
+    def self.helper_method(...)
+    end
 
     include Authentication
 
