@@ -1,15 +1,18 @@
+
 module ReviseAuth
   module Generators
     class InstallGenerator < Rails::Generators::Base
+      include Rails::Generators::Migration
+
       desc "Install revise_auth"
 
       source_root File.expand_path("templates", __dir__)
 
-      def create_migration_file
-        migration_template "migration.rb", "db/migrate/add_users_table.rb"
+      def copy_migration_file
+        migration_template "migration.rb", "db/migrate/create_users.rb"
       end
 
-      def create_model_file
+      def copy_model_file
         template "user.rb", "app/models/user.rb"
       end
     end

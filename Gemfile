@@ -6,7 +6,7 @@ gemspec
 
 gem "puma"
 gem "sqlite3"
-gem "web-console"
+gem "web-console", group: :development
 gem "sprockets-rails"
 gem "turbo-rails"
 gem "importmap-rails"
