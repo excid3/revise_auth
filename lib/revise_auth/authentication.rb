@@ -34,22 +34,22 @@ module ReviseAuth
 
     # Returns a user from session cookie
     def authenticated_user_from_session
-      user_id = request.session[:user_id]
+      user_id = cookies.signed[:user_id]
       return unless user_id
       User.find_by(id: user_id)
     end
 
     # Logs in the user
     # - Set Current.user for the current request
-    # - Save a session cookie so the next request is authenticated
+    # - Set a signed session cookie so the next request is authenticated
     def login(user)
       Current.user = user
-      session[:user_id] = user.id
+      cookies.signed.permanent[:user_id] = { value: user.id, httponly: true }
     end
 
     def logout
       Current.user = nil
-      session.delete(:user_id)
+      cookies.delete(:user_id)
     end
   end
 end
