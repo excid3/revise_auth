@@ -3,7 +3,7 @@ class ReviseAuth::SessionsController < ReviseAuthController
   end
 
   def create
-    if (user = User.find_by(email: params[:email])&.authenticate(params[:password]))
+    if (user = User.authenticate_by(email: params[:email], password: params[:password]))
       login(user)
       redirect_to root_path
     else
