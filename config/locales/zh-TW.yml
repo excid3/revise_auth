@@ -1,0 +1,16 @@
+zh-TW:
+  revise_auth:
+    account_deleted: "您的帳號已經被刪除"
+    account_updated: "帳號更新成功"
+
+    invalid_email_or_password: "錯誤的信箱或是密碼"
+    sign_up_or_login: "需要註冊或是登入才能進行"
+
+    # Password changes
+    password_changed: "您的密碼已經成功地更新"
+    incorrect_password: "您現在輸入的密碼不正確, 請重新嘗試"
+
+    # Email confirmations
+    email_confirmed: "您的電子信箱已經成功地通過驗證"
+    email_confirm_failed: "無法驗證您的電子信箱"
+    confirmation_email_sent: "電子信箱驗證信已寄往 %{email}"
