@@ -1,0 +1,16 @@
+fr:
+  revise_auth:
+    account_deleted: "Votre compte a été supprimé."
+    account_updated: "Votre compte a été mis à jour."
+
+    invalid_email_or_password: "Email ou mot de passe incorrect."
+    sign_up_or_login: "Vous devez être connecté ou vous enregistrer pour continuer."
+
+    # Password changes
+    password_changed: "Votre mot de passe a été mis à jour avec succès."
+    incorrect_password: "Mot de passe incorrect. Merci de réessayer"
+
+    # Email confirmations
+    email_confirmed: "Votre adresse email vient d'être confirmé."
+    email_confirm_failed: "Impossible de confirmer votre adresse email."
+    confirmation_email_sent: "Un email de confirmation vient d'être envoyé à %{email}"
