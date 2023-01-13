@@ -1,23 +1,31 @@
 require "test_helper"
-require "generators/revise_auth/install_generator"
+require "generators/revise_auth/model_generator"
 
 class InstallGeneratorTest < Rails::Generators::TestCase
-  tests ReviseAuth::Generators::InstallGenerator
+  tests ::ReviseAuth::Generators::ModelGenerator
 
-  destination File.expand_path("../../tmp", __dir__)
+  destination Rails.root
 
-  setup :prepare_destination
-
-  test "copy migration file" do
-    # skip
-    run_generator
-
-    assert_migration "db/migrate/create_users.rb"
+  teardown do
+    remove_if_exists("app/models/account.rb")
+    remove_if_exists("db/migrate")
+    remove_if_exists("test")
   end
 
-  test "copy model file" do
-    run_generator
+  test "model and migration are created" do
+    run_generator ["Account"]
+    assert_file "app/models/account.rb", /include/
+    assert_migration "db/migrate/create_accounts.rb", /def change/
+  end
 
-    assert_file "app/models/user.rb"
+  test "migration is created with user attributes" do
+    run_generator ["Account", "first_name:string", "last_name:string"]
+    assert_migration "db/migrate/create_accounts.rb", /first_name/
+    assert_migration "db/migrate/create_accounts.rb", /last_name/
+  end
+
+  def remove_if_exists(path)
+    full_path = Rails.root.join(path)
+    FileUtils.rm_rf(full_path)
   end
 end
