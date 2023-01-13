@@ -12,5 +12,5 @@ nl:
 
         # E-mail confirmations
         email_confirmed: "Uw e-mailadres is succesvol bevestigd."
-        email_confirm_failed: "E-mail adres bevestigen niet mogelijk."
+        email_confirm_failed: "E-mailadres bevestigen niet mogelijk."
         confirmation_email_sent: "Er is een bevestigingsmail verzonden naar %{email}"
