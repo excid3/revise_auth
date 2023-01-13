@@ -1,4 +1,3 @@
-
 module ReviseAuth
   module Generators
     class ModelGenerator < Rails::Generators::NamedBase
@@ -10,7 +9,6 @@ module ReviseAuth
 
       argument :name, required: false, default: "User"
       argument :attributes, type: :array, default: [], banner: "field:type field:type"
-
 
       def generate_model
         generate :model, name, *model_attributes
@@ -29,7 +27,6 @@ module ReviseAuth
       def done
         readme "README" if behavior == :invoke
       end
-
 
       private
 
