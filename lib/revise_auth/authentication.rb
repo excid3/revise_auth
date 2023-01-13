@@ -22,7 +22,7 @@ module ReviseAuth
 
     # Authenticates a user or redirects to the login page
     def authenticate_user!
-      redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login") unless user_signed_in?
+      redirect_to_login_with_stashed_location unless user_signed_in?
     end
 
     # Authenticates the current user
@@ -43,13 +43,26 @@ module ReviseAuth
     # - Set Current.user for the current request
     # - Save a session cookie so the next request is authenticated
     def login(user)
+      reset_session
+
       Current.user = user
       session[:user_id] = user.id
     end
 
     def logout
       Current.user = nil
-      session.delete(:user_id)
+      reset_session
     end
+
+    private
+      def redirect_to_login_with_stashed_location
+        stash_intended_location
+        redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login")
+      end
+
+      # Store user intended url, so we can redirect him there after the login.
+      def stash_intended_location
+        session[:user_return_to] = request.original_url if request.get?
+      end
   end
 end
