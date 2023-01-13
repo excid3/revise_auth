@@ -8,8 +8,9 @@ class InstallGeneratorTest < Rails::Generators::TestCase
 
   teardown do
     remove_if_exists("app/models/account.rb")
-    remove_if_exists("db/migrate")
-    remove_if_exists("test")
+    remove_if_exists("db/migrate/*_create_accounts.rb")
+    remove_if_exists("test/models/account_test.rb")
+    remove_if_exists("test/fixtures/accounts.yml")
   end
 
   test "model and migration are created" do
@@ -26,6 +27,6 @@ class InstallGeneratorTest < Rails::Generators::TestCase
 
   def remove_if_exists(path)
     full_path = Rails.root.join(path)
-    FileUtils.rm_rf(full_path)
+    FileUtils.rm(Dir.glob(full_path))
   end
 end
