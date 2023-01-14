@@ -4,7 +4,7 @@ en:
     account_updated: "Account wurde erfolgreich aktualisiert." 
 
     invalid_email_or_password: "Ungültige Email oder Passwort." 
-    sign_up_or_login: "Registrieren oder anmelden um fortzufahren" 
+    sign_up_or_login: "Registrieren oder anmelden um fortzufahren." 
 
     # Password changes
     password_changed: "Dein Passwort wurde erfolgreich geändert."  
