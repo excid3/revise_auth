@@ -1,0 +1,16 @@
+en:
+  revise_auth:
+    account_deleted: "Hesabınız silindi."
+    account_updated: "Hesap başarıyla güncellendi."
+
+    invalid_email_or_password: "Geçersiz e-posta veya şifre."
+    sign_up_or_login: "Devam etmek için kaydol veya giriş yap."
+
+    # Password changes
+    password_changed: "Şifreniz başarıyla güncellendi."
+    incorrect_password: "Şu anki şifreniz yanlış. Lütfen tekrar deneyiniz."
+
+    # Email confirmations
+    email_confirmed: "E-posta adresiniz başarıyla onaylandı."
+    email_confirm_failed: "E-posta adresi doğrulanamıyor."
+    confirmation_email_sent: "%{email} adresine onay e-postası gönderildi."
