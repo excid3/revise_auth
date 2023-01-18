@@ -1,0 +1,16 @@
+en:
+  revise_auth:
+    account_deleted: "Dein Account wurde gelöscht." 
+    account_updated: "Account wurde erfolgreich aktualisiert." 
+
+    invalid_email_or_password: "Ungültige Email oder Passwort." 
+    sign_up_or_login: "Registrieren oder anmelden um fortzufahren." 
+
+    # Password changes
+    password_changed: "Dein Passwort wurde erfolgreich geändert."  
+    incorrect_password: "Das Passwort ist ungültig. Bitte versuche es erneut." 
+
+    # Email confirmations
+    email_confirmed: "Deine Email wurde erfogreich bestätigt."  
+    email_confirm_failed: "Email Adresse kann nicht bestätigt werden." 
+    confirmation_email_sent: "Eine Bestätigungsemail wurde versandt an %{email}" 
