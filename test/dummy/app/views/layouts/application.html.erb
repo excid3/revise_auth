@@ -15,14 +15,14 @@
     <%= tag.p alert if alert %>
 
     <nav>
-      <%= link_to "Home", root_path %>
+      <%= link_to "Home", main_app.root_path %>
 
       <% if user_signed_in? %>
         <%= link_to "Profile", profile_path %>
-        <%= button_to "Log out", logout_path, method: :delete %>
+        <%= button_to "Log out", revise_auth.logout_path, method: :delete %>
       <% else %>
-        <%= link_to "Sign Up", sign_up_path %>
-        <%= link_to "Log in", login_path %>
+        <%= link_to "Sign Up", revise_auth.sign_up_path %>
+        <%= link_to "Log in", revise_auth.login_path %>
       <% end %>
     </nav>
 

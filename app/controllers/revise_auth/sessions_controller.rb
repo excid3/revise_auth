@@ -5,7 +5,7 @@ class ReviseAuth::SessionsController < ReviseAuthController
   def create
     if (user = User.find_by(email: params[:email])&.authenticate(params[:password]))
       login(user)
-      redirect_to root_path
+      redirect_to main_app.root_path
     else
       flash[:alert] = I18n.t("revise_auth.invalid_email_or_password")
       render :new, status: :unprocessable_entity
@@ -14,6 +14,6 @@ class ReviseAuth::SessionsController < ReviseAuthController
 
   def destroy
     logout
-    redirect_to root_path
+    redirect_to main_app.root_path
   end
 end

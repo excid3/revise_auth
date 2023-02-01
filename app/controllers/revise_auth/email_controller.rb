@@ -8,7 +8,7 @@ class ReviseAuth::EmailController < ReviseAuthController
       user_signed_in?
       redirect_to(user_signed_in? ? profile_path : root_path)
     else
-      redirect_to root_path, alert: I18n.t("revise_auth.email_confirm_failed")
+      redirect_to main_app.root_path, alert: I18n.t("revise_auth.email_confirm_failed")
     end
   end
 

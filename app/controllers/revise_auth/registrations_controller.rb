@@ -9,7 +9,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
     @user = User.new(sign_up_params)
     if @user.save
       login(@user)
-      redirect_to root_path
+      redirect_to main_app.root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
   def destroy
     current_user.destroy
     logout
-    redirect_to root_path, status: :see_other, alert: I18n.t("revise_auth.account_deleted")
+    redirect_to main_app.root_path, status: :see_other, alert: I18n.t("revise_auth.account_deleted")
   end
 
   private

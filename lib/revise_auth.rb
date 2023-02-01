@@ -1,6 +1,5 @@
 require "revise_auth/version"
 require "revise_auth/engine"
-require "revise_auth/routes"
 
 module ReviseAuth
   autoload :Authentication, "revise_auth/authentication"
