@@ -8,7 +8,7 @@ module ReviseAuth
 
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
-      validates_length_of :password, minimum: 12
+      validates_length_of :password, minimum: 12, allow_nil: true
 
       before_save do
         self.email = email.downcase
