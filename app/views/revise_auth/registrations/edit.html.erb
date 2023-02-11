@@ -43,8 +43,8 @@
     <% end %>
 
     <div>
-      <%= label_tag :current_password %>
-      <%= password_field_tag :current_password, nil, required: true %>
+      <%= form.label :password_challenge, "Current password" %>
+      <%= form.password_field :password_challenge, required: true %>
     </div>
 
     <div>
