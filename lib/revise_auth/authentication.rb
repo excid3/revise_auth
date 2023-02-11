@@ -29,7 +29,7 @@ module ReviseAuth
     # - from session cookie
     # - (future) from Authorization header
     def authenticate_user
-      Current.user = authenticated_user_from_session
+      Current.user = authenticated_user_from_session || authenticated_user_from_cookies
     end
 
     # Returns a user from session cookie
@@ -39,17 +39,27 @@ module ReviseAuth
       User.find_by(id: user_id)
     end
 
+    # Returns a user from cookies
+    def authenticated_user_from_cookies
+      user_id = cookies.encrypted[:user_id]
+      return unless user_id
+      User.find_by(id: user_id)
+    end
+
     # Logs in the user
     # - Set Current.user for the current request
     # - Save a session cookie so the next request is authenticated
     def login(user)
       Current.user = user
+      reset_session
       session[:user_id] = user.id
+      cookies.permanent.encrypted[:user_d] = user.id
     end
 
     def logout
       Current.user = nil
-      session.delete(:user_id)
+      cookies.delete(:user_id)
+      reset_session
     end
   end
 end
