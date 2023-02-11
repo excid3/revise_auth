@@ -2,7 +2,6 @@ module ActionDispatch::Routing
   class Mapper
     def revise_auth
       scope module: :revise_auth do
-
         revise_registration
 
         get "login", to: "sessions#new"
@@ -19,7 +18,6 @@ module ActionDispatch::Routing
         delete "logout", to: "sessions#destroy"
       end
     end
-
 
     # Adds helpers for config/routes.rb to constraint routes with authentication
     #

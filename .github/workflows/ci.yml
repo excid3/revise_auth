@@ -39,4 +39,5 @@ jobs:
           DATABASE_URL: "sqlite3:revise_auth_test"
           RAILS_ENV: test
         run: |
-          bundle exec rake
+          bundle exec rails db:test:prepare
+          bundle exec rails test
