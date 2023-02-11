@@ -1,0 +1,16 @@
+el:
+  revise_auth:
+    account_deleted: "Ο λογαριασμός σας έχει διαγραφεί."
+    account_updated: "Ο λογαριασμός σας έχει ενημερωθεί επιτυχώς."
+
+    invalid_email_or_password: "Μη έγκυρο email ή κωδικός πρόσβασης."
+    sign_up_or_login: "Εγγραφείτε ή συνδεθείτε για να συνεχίσετε."
+
+    # Password changes
+    password_changed: "Ο κωδικός πρόσβασής σας άλλαξε με επιτυχία."
+    incorrect_password: "Ο τρέχων κωδικός πρόσβασής σας είναι λανθασμένος. Παρακαλώ δοκιμάστε ξανά."
+
+    # Email confirmations
+    email_confirmed: "Η διεύθυνση email σας επιβεβαιώθηκε επιτυχώς."
+    email_confirm_failed: "Δεν είναι δυνατή η επιβεβαίωση της διεύθυνσης email."
+    confirmation_email_sent: "Ένα email επιβεβαίωσης έχει σταλεί στο %{email}"

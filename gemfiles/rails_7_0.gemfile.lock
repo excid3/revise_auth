@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     revise_auth (0.2.0)
       bcrypt (~> 3.1)
@@ -111,7 +111,6 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
     minitest (5.17.0)
     net-imap (0.3.4)
       date
@@ -220,9 +219,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
-  arm64-darwin-20
   arm64-darwin-22
-  x86_64-darwin-20
   x86_64-darwin-22
   x86_64-linux
 
@@ -231,6 +228,7 @@ DEPENDENCIES
   debug (>= 1.0.0)
   importmap-rails
   puma
+  rails (~> 7.0.0)
   revise_auth!
   sprockets-rails
   sqlite3
