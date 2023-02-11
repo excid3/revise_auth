@@ -50,7 +50,6 @@ module ReviseAuth
 
     def logout
       Current.user = nil
-      session.delete(:user_id)
       reset_session
     end
   end
