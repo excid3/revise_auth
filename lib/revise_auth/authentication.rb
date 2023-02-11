@@ -44,12 +44,13 @@ module ReviseAuth
     # - Save a session cookie so the next request is authenticated
     def login(user)
       Current.user = user
+      reset_session
       session[:user_id] = user.id
     end
 
     def logout
       Current.user = nil
-      session.delete(:user_id)
+      reset_session
     end
   end
 end
