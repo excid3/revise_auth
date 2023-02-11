@@ -11,7 +11,7 @@ module ReviseAuth
       argument :attributes, type: :array, default: [], banner: "field:type field:type"
 
       def initialize(args, *options)
-        @original_attributes = args[1..]
+        @original_attributes = args[1..] || []
         super
       end
 
