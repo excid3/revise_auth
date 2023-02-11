@@ -10,12 +10,17 @@ module ReviseAuth
       argument :name, required: false, default: "User"
       argument :attributes, type: :array, default: [], banner: "field:type field:type"
 
+      def initialize(args, *options)
+        @original_attributes = args[1..-1]
+        super
+      end
+
       def generate_model
         generate :model, name, *model_attributes
       end
 
       def add_revise_auth_model
-        inject_into_class model_path, class_name, " include ReviseAuth::Model\n"
+        inject_into_class model_path, class_name, "  include ReviseAuth::Model\n"
       end
 
       def add_uniq_to_email_index
@@ -46,9 +51,7 @@ module ReviseAuth
           "confirmed_at:datetime",
           "confirmation_sent_at:datetime",
           "unconfirmed_email:string"
-        ].concat(
-          attributes.map { "#{_1.name}:#{_1.type}" }
-        )
+        ] + @original_attributes
       end
     end
   end
