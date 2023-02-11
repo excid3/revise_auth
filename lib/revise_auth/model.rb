@@ -3,6 +3,8 @@ module ReviseAuth
     extend ActiveSupport::Concern
 
     included do
+      include Backports if Rails.gem_version < Gem::Version.new("7.1")
+
       has_secure_password
       has_secure_token :confirmation_token
 
