@@ -5,8 +5,14 @@ module ReviseAuth
     included do
       include Backports if Rails.gem_version < Gem::Version.new("7.1")
 
+      EMAIL_VERIFICATION_TOKEN_VALIDITY = 1.day
+
       has_secure_password
       has_secure_token :confirmation_token
+
+      generates_token_for :email_verification, expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY do
+        email
+      end
 
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
@@ -20,29 +26,12 @@ module ReviseAuth
 
     # Generates a confirmation token and send email to the user
     def send_confirmation_instructions
-      update!(
-        confirmation_token: self.class.generate_unique_secure_token(length: ActiveRecord::SecureToken::MINIMUM_TOKEN_LENGTH),
-        confirmation_sent_at: Time.current
-      )
-      ReviseAuth::Mailer.with(user: self).confirm_email.deliver_later
+      token = generate_token_for(:email_verification)
+      ReviseAuth::Mailer.with(user: self, token: token).confirm_email.deliver_later
     end
 
-    # Confirms an email address change
     def confirm_email_change
-      if confirmation_period_expired?
-        false
-      else
-        update(
-          confirmed_at: Time.current,
-          email: unconfirmed_email,
-          unconfirmed_email: nil
-        )
-      end
-    end
-
-    # Checks whether the confirmation token is within the valid time
-    def confirmation_period_expired?
-      confirmation_sent_at.before?(1.day.ago)
+      update(confirmed_at: Time.current, email: unconfirmed_email)
     end
   end
 end

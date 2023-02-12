@@ -47,9 +47,7 @@ module ReviseAuth
         [
           "email:string:index",
           "password_digest:string",
-          "confirmation_token:string",
           "confirmed_at:datetime",
-          "confirmation_sent_at:datetime",
           "unconfirmed_email:string"
         ] + @original_attributes
       end
