@@ -1,3 +1,5 @@
+require "revise_auth/backports/secure_password"
+
 module ReviseAuth
   module Backports
     extend ActiveSupport::Concern
