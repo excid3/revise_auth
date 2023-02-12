@@ -16,7 +16,7 @@
       </ul>
     <% end %>
 
-    <p>Your email address is: <%= current_user.email %>
+    <p>Your email address is: <%= current_user.email %></p>
     <p>To change your email, we will send a confirmation email to your new address to complete the change.</p>
 
     <div>
@@ -43,8 +43,8 @@
     <% end %>
 
     <div>
-      <%= label_tag :current_password %>
-      <%= password_field_tag :current_password, nil, required: true %>
+      <%= form.label :password_challenge, "Current password" %>
+      <%= form.password_field :password_challenge, required: true %>
     </div>
 
     <div>
