@@ -12,6 +12,8 @@ module ActionDispatch::Routing
         patch "profile/email", to: "email#update"
         patch "profile/password", to: "password#update"
 
+        resources :password_resets, param: :token, only: [:new, :create, :edit, :update]
+
         # Email confirmation
         get "profile/email", to: "email#show"
 

@@ -1,0 +1,25 @@
+<h1>Reset Your Password</h1>
+
+<%= form_with model: @user, url: sign_up_path do |form| %>
+  <% if form.object.errors.any? %>
+    <ul>
+      <% form.object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, required: true %>
+  </div>
+
+  <div>
+    <%= form.button "Reset password" %>
+  </div>
+<% end %>
