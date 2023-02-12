@@ -8,6 +8,12 @@ module ReviseAuth
       has_secure_password
       has_secure_token :confirmation_token
 
+      PASSWORD_RESET_TOKEN_VALIDITY = 1.hour
+
+      generates_token_for :password_reset, expires_in: PASSWORD_RESET_TOKEN_VALIDITY do
+        BCrypt::Password.new(password_digest).salt[-10..]
+      end
+
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
       validates_length_of :password, minimum: 12, allow_nil: true
