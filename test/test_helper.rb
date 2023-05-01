@@ -12,3 +12,12 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
+
+class ActiveSupport::TestCase
+  def login(user, password: "password")
+    post login_path, params: {
+      email: user.email,
+      password: password
+    }
+  end
+end
