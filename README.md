@@ -14,7 +14,7 @@ bundle add "revise_auth"
 
 And then execute the following to generate a `User` model (optionally adding other fields such as `first_name` and `last_name`):
 ```bash
-$ rails g revise_auth:model first_name last_name
+$ rails g revise_auth:model User first_name last_name
 $ rails db:migrate
 ```
 
