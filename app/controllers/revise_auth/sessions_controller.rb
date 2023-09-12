@@ -7,13 +7,13 @@ class ReviseAuth::SessionsController < ReviseAuthController
       login(user)
       redirect_to root_path
     else
-      flash[:alert] = I18n.t("revise_auth.invalid_email_or_password")
+      #flash[:alert] = I18n.t("revise_auth.invalid_email_or_password")
       render :new, status: :unprocessable_entity
     end
   end
 
-  def destroy
+  def delete
     logout
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 end
