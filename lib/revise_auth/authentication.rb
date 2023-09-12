@@ -52,6 +52,7 @@ module ReviseAuth
       Current.user = nil
       reset_session
     end
+
     def reset_session
       if session && session.respond_to?(:destroy)
         session.destroy

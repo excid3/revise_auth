@@ -1,0 +1,16 @@
+<nav>
+  <%= link_to "Home", root_path %>
+
+  <% if user_signed_in? %>
+    <%= link_to "Profile", profile_path %>
+    <%= button_to "Log out", 'logout', method: :delete %>
+  <% else %>
+    <%= link_to "Sign Up", sign_up_path %>
+    <%= link_to "Log in", login_path %>
+  <% end %>
+</nav>
+
+<h1>Authenticated Route</h1>
+
+<p>You can only access this route when authenticated.</p>
+<p>Authenticated as <%= current_user.email %></p>

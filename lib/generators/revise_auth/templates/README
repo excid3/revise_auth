@@ -1,4 +1,5 @@
 🚚 Your Revise auth database model has been generated!
 
 Next step:
-  Run "rails db:migrate"
+  Add "add_index :users, :email, unique: true" at the bottom of the change method
+  Run "jets db:migrate"
