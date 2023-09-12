@@ -16,7 +16,10 @@ module ReviseAuth
       end
 
       def generate_model
-        generate :model, name, *model_attributes
+        model_attributess = model_attributes.join(', ').gsub(':index', '').gsub(',', '')
+        puts "jets g model #{name} #{model_attributess}"
+      system "jets g model #{name} #{model_attributess}"
+        #generate :model, name, *model_attributes
       end
 
       def add_revise_auth_model
@@ -36,7 +39,7 @@ module ReviseAuth
       private
 
       def migration_path
-        @migration_path ||= Dir.glob(Rails.root.join("db/migrate/*")).max_by { |f| File.mtime(f) }
+        @migration_path ||= Dir.glob(Jets.root.join("db/migrate/*")).max_by { |f| File.mtime(f) }
       end
 
       def model_path

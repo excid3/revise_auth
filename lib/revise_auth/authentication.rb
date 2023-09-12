@@ -22,7 +22,7 @@ module ReviseAuth
 
     # Authenticates a user or redirects to the login page
     def authenticate_user!
-      redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login") unless user_signed_in?
+      redirect_to login_path unless user_signed_in?
     end
 
     # Authenticates the current user
@@ -51,6 +51,13 @@ module ReviseAuth
     def logout
       Current.user = nil
       reset_session
+    end
+    def reset_session
+      if session && session.respond_to?(:destroy)
+        session.destroy
+      else
+        self.session = {}
+      end
     end
   end
 end

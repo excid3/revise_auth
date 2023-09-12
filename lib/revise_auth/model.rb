@@ -3,20 +3,20 @@ module ReviseAuth
     extend ActiveSupport::Concern
 
     included do
-      include Backports if Rails.gem_version < Gem::Version.new("7.1")
+      include Backports
 
       EMAIL_VERIFICATION_TOKEN_VALIDITY = 1.day
 
       has_secure_password
       has_secure_token :confirmation_token
 
-      generates_token_for :email_verification, expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY do
-        email
-      end
+      # generates_token_for :email_verification, expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY do
+      #   email
+      # end
 
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
-      validates_length_of :password, minimum: 12, allow_nil: true
+      validates_length_of :password, minimum: 6, allow_nil: true
 
       before_validation do
         email&.downcase!&.strip!
