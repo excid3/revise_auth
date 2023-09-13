@@ -2,10 +2,8 @@ module ReviseAuth
   module Model
     extend ActiveSupport::Concern
 
-    included do
-      include Backports if Rails.gem_version < Gem::Version.new("7.1")
-
-      EMAIL_VERIFICATION_TOKEN_VALIDITY = 1.day
+    included do |base|
+      base.const_set :EMAIL_VERIFICATION_TOKEN_VALIDITY, 1.day
 
       has_secure_password
       has_secure_token :confirmation_token
