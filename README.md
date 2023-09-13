@@ -12,9 +12,9 @@ bundle add "revise_auth"
 
 And then execute the following to generate a `User` model (optionally adding other fields such as `first_name` and `last_name`):
 ```bash
-$ jetsg revise_auth:model User first_name last_name
+$ jets g revise_auth:model User first_name last_name
 $ jets db:migrate
-$ jetsg revise_auth:views
+$ jets g revise_auth:views
 ```
 
 ## Usage
