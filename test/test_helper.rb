@@ -10,6 +10,7 @@ require "bcrypt"
 
 # Load fixtures from the engine
 ActiveSupport::TestCase.fixture_paths << File.expand_path("fixtures", __dir__)
+ActionDispatch::IntegrationTest.fixture_paths << File.expand_path("fixtures", __dir__)
 ActiveSupport::TestCase.fixtures :all
 
 class ActiveSupport::TestCase
