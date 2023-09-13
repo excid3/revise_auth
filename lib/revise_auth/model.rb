@@ -8,7 +8,7 @@ module ReviseAuth
       has_secure_password
       has_secure_token :confirmation_token
 
-      generates_token_for :email_verification, expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY do
+      generates_token_for :email_verification, expires_in: base.const_get(:EMAIL_VERIFICATION_TOKEN_VALIDITY) do
         email
       end
 
