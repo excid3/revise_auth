@@ -7,7 +7,7 @@ A pure Ruby on Jets authentication system like Devise.
 Add this line to your application's Gemfile:
 
 ```ruby
-bundle add "revise_auth"
+bundle add "revise_auth-jets"
 ```
 
 And then execute the following to generate a `User` model (optionally adding other fields such as `first_name` and `last_name`):
