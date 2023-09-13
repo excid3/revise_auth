@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    revise_auth (0.2.1)
+    revise_auth-jets (0.2.1)
       bcrypt (~> 3.1)
 
 GEM
@@ -303,7 +303,7 @@ DEPENDENCIES
   importmap-rails
   jets (~> 4.0, >= 4.0.4)
   puma
-  revise_auth!
+  revise_auth-jets!
   sprockets-rails
   sqlite3
   standard
