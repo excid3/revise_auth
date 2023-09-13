@@ -1,4 +1,4 @@
-require 'revise_auth'
+require 'revise_auth-jets'
 class ReviseAuthController < ApplicationController
   # Return true if it's a revise_auth_controller. false to all controllers unless
   # the controllers defined inside revise_auth. Useful if you want to apply a before
