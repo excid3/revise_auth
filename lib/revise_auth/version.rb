@@ -1,3 +1,3 @@
 module ReviseAuth
-  VERSION = "0.2.6"
+  VERSION = "0.2.9"
 end

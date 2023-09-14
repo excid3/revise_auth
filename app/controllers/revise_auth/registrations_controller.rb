@@ -26,7 +26,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
     end
   end
 
-  def destroy
+  def delete
     current_user.destroy
     logout
     redirect_to root_path, status: :see_other, alert: I18n.t("revise_auth.account_deleted")

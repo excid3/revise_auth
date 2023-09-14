@@ -26,7 +26,10 @@ module ReviseAuth
 
     # Generates a confirmation token and send email to the user
     def send_confirmation_instructions
-      token = generate_token_for
+      # = breaks the query params
+      token = generate_token_for.gsub("=", '')
+      self.confirmation_token = token
+      self.save!
       ReviseAuth::Mailer.with(user: self.unconfirmed_email, token: token).confirm_email.deliver_later
     end
 
