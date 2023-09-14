@@ -3,3 +3,4 @@
 Next step:
   Add "add_index :users, :email, unique: true" at the bottom of the change method
   Run "jets db:migrate"
+  Run "jets g revise_auth:views"
