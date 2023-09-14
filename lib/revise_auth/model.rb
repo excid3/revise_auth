@@ -2,19 +2,21 @@ module ReviseAuth
   module Model
     extend ActiveSupport::Concern
 
-    included do |base|
-      base.const_set :EMAIL_VERIFICATION_TOKEN_VALIDITY, 1.day
+    included do
+      include Backports
+
+      EMAIL_VERIFICATION_TOKEN_VALIDITY = 1.day
 
       has_secure_password
       has_secure_token :confirmation_token
 
-      generates_token_for :email_verification, expires_in: base.const_get(:EMAIL_VERIFICATION_TOKEN_VALIDITY) do
-        email
+      def generate_token_for
+        signed_id expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY, purpose: :email_verification
       end
 
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
-      validates_length_of :password, minimum: 12, allow_nil: true
+      validates_length_of :password, minimum: 6, allow_nil: true
 
       before_validation do
         email&.downcase!&.strip!
@@ -24,8 +26,11 @@ module ReviseAuth
 
     # Generates a confirmation token and send email to the user
     def send_confirmation_instructions
-      token = generate_token_for(:email_verification)
-      ReviseAuth::Mailer.with(user: self, token: token).confirm_email.deliver_later
+      # = breaks the query params
+      token = generate_token_for.gsub("=", '')
+      self.confirmation_token = token
+      self.save!
+      ReviseAuth::Mailer.with(user: self.unconfirmed_email, token: token).confirm_email.deliver_later
     end
 
     def confirm_email_change
