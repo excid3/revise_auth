@@ -10,9 +10,9 @@ module ReviseAuth
       has_secure_password
       has_secure_token :confirmation_token
 
-      # generates_token_for :email_verification, expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY do
-      #   email
-      # end
+      def generate_token_for
+        signed_id expires_in: EMAIL_VERIFICATION_TOKEN_VALIDITY, purpose: :email_verification
+      end
 
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
@@ -26,8 +26,8 @@ module ReviseAuth
 
     # Generates a confirmation token and send email to the user
     def send_confirmation_instructions
-      token = generate_token_for(:email_verification)
-      ReviseAuth::Mailer.with(user: self, token: token).confirm_email.deliver_later
+      token = generate_token_for
+      ReviseAuth::Mailer.with(user: self.unconfirmed_email, token: token).confirm_email.deliver_later
     end
 
     def confirm_email_change
