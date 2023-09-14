@@ -55,7 +55,7 @@ GEM
       rainbow
       thor
       zeitwerk
-    aws-partitions (1.820.0)
+    aws-partitions (1.822.0)
     aws-sdk-apigateway (1.87.0)
       aws-sdk-core (~> 3, >= 3.177.0)
       aws-sigv4 (~> 1.1)
@@ -263,7 +263,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.5-arm64-darwin)
+    sqlite3 (1.6.6-arm64-darwin)
     standard (1.31.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)

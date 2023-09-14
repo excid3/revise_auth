@@ -5,7 +5,7 @@ class ReviseAuth::MailerTest < ActionMailer::TestCase
     user.unconfirmed_email = "unconfirmed@email.com"
     token = "s3c3tt0k3n"
 
-    email = ReviseAuth::Mailer.with(user:, token:).confirm_email
+    email = ReviseAuth::Mailer.with(user: user, token: token).confirm_email
 
     # Send the email, then test that it got queued
     assert_emails 1 do

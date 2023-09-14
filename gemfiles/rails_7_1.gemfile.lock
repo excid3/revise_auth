@@ -1,6 +1,12 @@
-GIT
-  remote: https://github.com/rails/rails.git
-  revision: edd43af862ef3701f4b7ca91ce659fde4e3e06b3
+PATH
+  remote: ..
+  specs:
+    revise_auth (0.3.0)
+      bcrypt (~> 3.1)
+      rails (>= 7.1.0.beta1)
+
+GEM
+  remote: https://rubygems.org/
   specs:
     actioncable (7.1.0.beta1)
       actionpack (= 7.1.0.beta1)
@@ -75,39 +81,6 @@ GIT
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    rails (7.1.0.beta1)
-      actioncable (= 7.1.0.beta1)
-      actionmailbox (= 7.1.0.beta1)
-      actionmailer (= 7.1.0.beta1)
-      actionpack (= 7.1.0.beta1)
-      actiontext (= 7.1.0.beta1)
-      actionview (= 7.1.0.beta1)
-      activejob (= 7.1.0.beta1)
-      activemodel (= 7.1.0.beta1)
-      activerecord (= 7.1.0.beta1)
-      activestorage (= 7.1.0.beta1)
-      activesupport (= 7.1.0.beta1)
-      bundler (>= 1.15.0)
-      railties (= 7.1.0.beta1)
-    railties (7.1.0.beta1)
-      actionpack (= 7.1.0.beta1)
-      activesupport (= 7.1.0.beta1)
-      irb
-      rackup (>= 1.0.0)
-      rake (>= 12.2)
-      thor (~> 1.0, >= 1.2.2)
-      zeitwerk (~> 2.6)
-
-PATH
-  remote: ..
-  specs:
-    revise_auth (0.3.0)
-      bcrypt (~> 3.1)
-      rails (>= 7.1.0.beta1)
-
-GEM
-  remote: https://rubygems.org/
-  specs:
     appraisal (2.5.0)
       bundler
       rake
@@ -183,6 +156,20 @@ GEM
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
+    rails (7.1.0.beta1)
+      actioncable (= 7.1.0.beta1)
+      actionmailbox (= 7.1.0.beta1)
+      actionmailer (= 7.1.0.beta1)
+      actionpack (= 7.1.0.beta1)
+      actiontext (= 7.1.0.beta1)
+      actionview (= 7.1.0.beta1)
+      activejob (= 7.1.0.beta1)
+      activemodel (= 7.1.0.beta1)
+      activerecord (= 7.1.0.beta1)
+      activestorage (= 7.1.0.beta1)
+      activesupport (= 7.1.0.beta1)
+      bundler (>= 1.15.0)
+      railties (= 7.1.0.beta1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -190,6 +177,14 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    railties (7.1.0.beta1)
+      actionpack (= 7.1.0.beta1)
+      activesupport (= 7.1.0.beta1)
+      irb
+      rackup (>= 1.0.0)
+      rake (>= 12.2)
+      thor (~> 1.0, >= 1.2.2)
+      zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.0.6)
     rdoc (6.5.0)
@@ -270,7 +265,7 @@ DEPENDENCIES
   debug (>= 1.0.0)
   importmap-rails
   puma
-  rails!
+  rails (~> 7.1.0.beta1)
   revise_auth!
   sprockets-rails
   sqlite3
