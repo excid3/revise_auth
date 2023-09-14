@@ -23,7 +23,7 @@ module ReviseAuth
       end
 
       def add_revise_auth_model
-        prepend_to_file model_path, "require 'revise_auth'\n"
+        prepend_to_file model_path, "require 'revise_auth-jets'\n"
         inject_into_class model_path, class_name, "  include ReviseAuth::Model\n"
       end
 
