@@ -12,7 +12,7 @@ Jets.application.routes.draw do
 
     get "profile", to: "registrations#edit", as: :profile
     patch "profile", to: "registrations#update"
-    delete "profile", to: "registrations#destroy"
+    delete "profile", to: "registrations#delete"
     patch "profile/email", to: "email#update"
     get "profile/password", to: "registrations#edit", as: :profile_password
     patch "profile/password", to: "password#update"

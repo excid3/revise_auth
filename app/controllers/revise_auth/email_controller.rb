@@ -3,7 +3,7 @@ class ReviseAuth::EmailController < ReviseAuthController
 
   # GET /profile/email?confirmation_token=abcdef
   def show
-    if User.find_signed(params[:confirmation_token], purpose: :email_verification)&.confirm_email_change
+    if User.find_by(confirmation_token: params[:confirmation_token])&.confirm_email_change
       #flash[:notice] = I18n.t("revise_auth.email_confirmed")
       redirect_to(user_signed_in? ? profile_path : root_path)
     else
