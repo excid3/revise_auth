@@ -11,6 +11,10 @@ module ReviseAuth
         template "app/config/routes.rb", "config/routes.rb"
       end
 
+      def copy_styles
+        template "app/stylesheet/theme.scss", "app/javascripts/packs"
+      end
+
       def copy_controllers
         template "app/controllers/main_controller.rb", "app/controllers/main_controller.rb"
         template "app/controllers/revise_auth_controller.rb", "app/controllers/revise_auth_controller.rb"

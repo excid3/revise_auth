@@ -1,71 +1,62 @@
-<h1>Profile</h1>
+<% content_for :form_block do %>
+  <div class="mb-4 text-center">
+    <h2 class="mb-1">Profile</h2>
+  </div>
 
-<%= form_with model: current_user, url: profile_email_path do |form| %>
-  <fieldset>
-    <legend>Change Email Address</legend>
 
-    <% if current_user.unconfirmed_email? %>
-      <p>Waiting for confirmation of <%= current_user.unconfirmed_email %></p>
-    <% end %>
-
-    <% if form.object.errors.any? %>
-      <ul>
-        <% form.object.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <p>Your email address is: <%= current_user.email %>
-    <p>To change your email, we will send a confirmation email to your new address to complete the change.</p>
-
-    <div>
-      <%= form.label :unconfirmed_email, "Email address" %>
-      <%= form.email_field :unconfirmed_email, required: true %>
+  <%= form_with model: current_user, local: true, url: profile_email_path do |form| %>
+    <%= render "shared/error_messages", resource: current_user  %>
+    <div class="form-group">
+      <%= form.label :name, "Full name" %>
+      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
     </div>
 
-    <div>
-      <%= form.button "Save Changes" %>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.email_field :email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
     </div>
-  </fieldset>
-<% end %>
 
-<%= form_with model: current_user, url: profile_password_path do |form| %>
-  <fieldset>
-    <legend>Change Password</legend>
+    <div class="mt-2 form-group">
+      <%= form.button "Update", disable_with: "Saving", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
-    <% if form.object.errors.any? %>
-      <ul>
-        <% form.object.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
 
-    <div>
+  <%= form_with model: current_user, local: true, url: profile_password_path do |form| %>
+    <%= render "shared/error_messages", resource: current_user  %>
+    <div class="form-group">
       <%= label_tag :current_password %>
-      <%= password_field_tag :current_password, nil, required: true %>
+      <%= password_field_tag :current_password, nil, required: true,  class: "form-control" %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= form.label :password, "New password" %>
-      <%= form.password_field :password, required: true %>
+      <%= form.password_field :password, required: true,  class: "form-control" %>
     </div>
 
-    <div>
+    <div class="form-group">
       <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation, required: true %>
+      <%= form.password_field :password_confirmation, required: true,  class: "form-control" %>
     </div>
-
-    <div>
-      <%= form.button "Save Changes" %>
+    <div class="mt-2 form-group">
+      <%= form.button "Update Password", disable_with: "Saving", class: "btn btn-primary" %>
     </div>
-  </fieldset>
-<% end %>
+  <% end %>
 
-<%= form_with url: profile_path, method: :delete do |form| %>
-  <fieldset>
-    <legend>Delete my account</legend>
-    <%= form.button "Delete account", data: { turbo_confirm: "Are you sure?" } %>
-  </fieldset>
+  <div class="flex flex-wrap flex-end">
+    <div class="flex-1">
+      <h3 class="mb-4">Cancel my account</h3>
+      <div class="mt-2">
+        <%= form_with url: profile_path, local: true, method: :delete do |form| %>
+          <fieldset>
+            <%= form.button "Delete account", class: "btn btn-danger btn-outline primary" %>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
 <% end %>
+<%= render "revise_auth/shared/form_block" %>
