@@ -24,6 +24,7 @@ module ReviseAuth
           end
         else
           directory "app/controllers/revise_auth"
+          directory "app/controllers/api"
         end
       end
 

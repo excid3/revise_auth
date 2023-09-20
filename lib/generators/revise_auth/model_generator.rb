@@ -20,7 +20,7 @@ module ReviseAuth
         puts "jets g model #{name} #{model_attributess}"
         system "jets g model #{name} #{model_attributess}"
         puts "Adding ApiToken"
-        system "jets g model ApiToken #{name.downcase}:references token:string:uniq name:string metadata:jsonb transient:boolean last_used_at:datetime expires_at:datetime"
+        system "jets g model ApiTokens #{name.downcase}:references token:string:uniq name:string metadata:jsonb transient:boolean last_used_at:datetime expires_at:datetime"
         #generate :model, name, *model_attributes
       end
 
@@ -30,6 +30,7 @@ module ReviseAuth
 
         prepend_to_file model_path, "require 'revise_auth-jets'\n"
         inject_into_class model_path, class_name, "  include ReviseAuth::Model\n"
+        inject_into_class model_path, class_name, "  has_many :api_tokens, dependent: :destroy\n"
       end
 
       def add_uniq_to_email_index
