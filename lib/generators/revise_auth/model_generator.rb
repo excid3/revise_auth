@@ -11,18 +11,23 @@ module ReviseAuth
       argument :attributes, type: :array, default: [], banner: "field:type field:type"
 
       def initialize(args, *options)
-        @original_attributes = args[1..] || []
         super
       end
 
       def generate_model
-        model_attributess = model_attributes.join(', ').gsub(':index', '').gsub(',', '')
+        model_attributess = model_attributes.join(', ').gsub(',', '')
+        puts "Adding #{name}"
         puts "jets g model #{name} #{model_attributess}"
         system "jets g model #{name} #{model_attributess}"
+        puts "Adding ApiToken"
+        system "jets g model ApiToken #{name.downcase}:references token:string:uniq name:string metadata:jsonb transient:boolean last_used_at:datetime expires_at:datetime"
         #generate :model, name, *model_attributes
       end
 
       def add_revise_auth_model
+        prepend_to_file "app/models/api_token.rb", "require 'revise_auth-jets'\n"
+        inject_into_class "app/models/api_token.rb", "ApiToken", "  include ReviseAuth::ApiModel\n"
+
         prepend_to_file model_path, "require 'revise_auth-jets'\n"
         inject_into_class model_path, class_name, "  include ReviseAuth::Model\n"
       end
@@ -51,13 +56,16 @@ module ReviseAuth
 
       def model_attributes
         [
-          "email:string:index",
+          "email:string:uniq",
           "password_digest:string",
+          "first_name:string",
+          "last_name:string",
+          "admin:boolean",
           "confirmation_token:string",
           "confirmed_at:datetime",
           "confirmation_sent_at:datetime",
           "unconfirmed_email:string"
-        ] + @original_attributes
+        ]
       end
     end
   end

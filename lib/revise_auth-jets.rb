@@ -7,5 +7,6 @@ module ReviseAuth
   autoload :Backports, "revise_auth/backports"
   autoload :Current, "revise_auth/current"
   autoload :Model, "revise_auth/model"
+  autoload :ApiModel, "revise_auth/api_model"
   autoload :RouteConstraint, "revise_auth/route_constraint"
 end

@@ -12,7 +12,7 @@ module ReviseAuth
       end
 
       def copy_styles
-        template "app/stylesheet/theme.scss", "app/javascripts/packs"
+        template "app/stylesheet/theme.scss", "app/javascript/packs/theme.scss"
       end
 
       def copy_controllers
@@ -35,6 +35,7 @@ module ReviseAuth
         else
           directory "app/views/revise_auth"
           directory "app/views/main"
+          directory "app/views/shared"
         end
       end
     end

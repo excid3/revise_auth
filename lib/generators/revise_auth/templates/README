@@ -1,8 +1,7 @@
 🚚 Your Revise auth database model has been generated!
 
 Next step:
-  Add "add_index :users, :email, unique: true" at the bottom of the change method
+  Add t.jsonb :metadata, default: {}  and t.boolean :transient, default: false into your ApiToken migration
   Run "jets db:migrate"
-  Add ActiveRecord::Base.signed_id_verifier_secret = "custom_verfifier_secret" in your initializers/  Set this as an env var
   Add your stmp settings in your development.rb
   Run "jets g revise_auth:views"
