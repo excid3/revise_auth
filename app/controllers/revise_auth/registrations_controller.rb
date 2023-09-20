@@ -9,6 +9,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
     @user = User.new(sign_up_params)
     if @user.save
       login(@user)
+      current_user.api_tokens.first_or_create(name: ApiToken::APP_NAME)
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity

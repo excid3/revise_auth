@@ -5,6 +5,7 @@ class ReviseAuth::SessionsController < ReviseAuthController
   def create
     if (user = User.authenticate_by(email: params[:email], password: params[:password]))
       login(user)
+      current_user.api_tokens.first_or_create(name: ApiToken::APP_NAME)
       redirect_to root_path
     else
       #flash[:alert] = I18n.t("revise_auth.invalid_email_or_password")
