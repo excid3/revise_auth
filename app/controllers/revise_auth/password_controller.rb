@@ -3,7 +3,7 @@ class ReviseAuth::PasswordController < ReviseAuthController
 
   def update
     if current_user.update(password_params)
-      #flash[:notice] = I18n.t("revise_auth.password_changed")
+      # flash[:notice] = I18n.t("revise_auth.password_changed")
     end
 
     redirect_to profile_path
@@ -17,7 +17,7 @@ class ReviseAuth::PasswordController < ReviseAuthController
 
   def validate_current_password
     unless current_user.authenticate(params[:current_password])
-      #flash[:alert] = I18n.t("revise_auth.incorrect_password")
+      # flash[:alert] = I18n.t("revise_auth.incorrect_password")
       render "revise_auth/registrations/edit", status: :unprocessable_entity
     end
   end

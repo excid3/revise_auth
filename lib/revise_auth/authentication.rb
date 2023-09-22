@@ -54,7 +54,7 @@ module ReviseAuth
     end
 
     def reset_session
-      if session && session.respond_to?(:destroy)
+      if session&.respond_to?(:destroy)
         session.destroy
       else
         self.session = {}

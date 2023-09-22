@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in revise_auth.gemspec.
 gemspec
 
-gem 'jets', '~> 4.0', '>= 4.0.4'
+gem "jets", "~> 4.0", ">= 4.0.4"
 gem "puma"
 gem "sqlite3"
 gem "web-console", group: :development

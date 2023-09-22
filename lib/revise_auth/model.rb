@@ -5,7 +5,7 @@ module ReviseAuth
     included do
       include Backports
 
-      EMAIL_VERIFICATION_TOKEN_VALIDITY = 1.day
+      EMAIL_VERIFICATION_TOKEN_VALIDITY = 1.day # standard:disable Lint/ConstantDefinitionInBlock
 
       has_secure_password
       has_secure_token :confirmation_token
@@ -27,10 +27,10 @@ module ReviseAuth
     # Generates a confirmation token and send email to the user
     def send_confirmation_instructions
       # = breaks the query params
-      token = generate_token_for.gsub("=", '')
+      token = generate_token_for.delete("=")
       self.confirmation_token = token
-      self.save!
-      ReviseAuth::Mailer.with(user: self.unconfirmed_email, token: token).confirm_email.deliver_later
+      save!
+      ReviseAuth::Mailer.with(user: unconfirmed_email, token: token).confirm_email.deliver_later
     end
 
     def confirm_email_change

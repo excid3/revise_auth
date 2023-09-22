@@ -3,8 +3,8 @@ module ReviseAuth
     extend ActiveSupport::Concern
 
     included do
-      DEFAULT_NAME = "api_token"
-      APP_NAME = "my_app"
+      DEFAULT_NAME = "api_token" # standard:disable Lint/ConstantDefinitionInBlock
+      APP_NAME = "my_app" # standard:disable Lint/ConstantDefinitionInBlock
 
       belongs_to :user
 

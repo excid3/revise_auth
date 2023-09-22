@@ -4,7 +4,6 @@ Jets.application.routes.draw do
   get "authenticated", to: "main#authenticated", as: :authenticated
 
   scope module: :revise_auth do
-
     get "sign_up", to: "registrations#new", as: :sign_up
     post "sign_up", to: "registrations#create"
     get "login", to: "sessions#new", as: :login
@@ -23,7 +22,7 @@ Jets.application.routes.draw do
     delete "logout", to: "sessions#delete"
   end
 
-    # API routes
+  # API routes
   namespace :api do
     namespace :v1 do
       resource :me, only: :show

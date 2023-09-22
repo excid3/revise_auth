@@ -15,13 +15,13 @@ module ReviseAuth
       end
 
       def generate_model
-        model_attributess = model_attributes.join(', ').gsub(',', '')
+        model_attributess = model_attributes.join(", ").delete(",")
         puts "Adding #{name}"
         puts "jets g model #{name} #{model_attributess}"
         system "jets g model #{name} #{model_attributess}"
         puts "Adding ApiToken"
         system "jets g model ApiTokens #{name.downcase}:references token:string:uniq name:string metadata:jsonb transient:boolean last_used_at:datetime expires_at:datetime"
-        #generate :model, name, *model_attributes
+        # generate :model, name, *model_attributes
       end
 
       def add_revise_auth_model

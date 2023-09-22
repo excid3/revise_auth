@@ -1,4 +1,4 @@
-#module ActionDispatch::Routing
+# module ActionDispatch::Routing
 #  class Mapper
 #    def revise_auth
 #      scope module: :revise_auth do
@@ -46,4 +46,4 @@
 #      delete "profile", to: "registrations#destroy"
 #    end
 #  end
-#end
+# end

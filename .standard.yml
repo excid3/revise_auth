@@ -1,2 +1,2 @@
-ruby_version: 2.7       # default: RUBY_VERSION
+ruby_version: 3.2       # default: RUBY_VERSION
 
