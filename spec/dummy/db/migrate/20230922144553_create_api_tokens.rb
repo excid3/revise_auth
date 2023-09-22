@@ -4,7 +4,7 @@ class CreateApiTokens < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.string :token
       t.string :name
-      #t.jsonb :metadata not for sqlite
+      # t.jsonb :metadata not for sqlite
       t.boolean :transient
       t.datetime :last_used_at
       t.datetime :expires_at

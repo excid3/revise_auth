@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2023_09_22_144553) do
-
   create_table "api_tokens", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "token"
