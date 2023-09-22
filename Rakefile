@@ -1,3 +1,6 @@
+require "jets"
+Jets.load_tasks
+
 require "bundler/setup"
 require "bundler/gem_tasks"
 require "rake/testtask"

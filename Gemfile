@@ -16,3 +16,7 @@ gem "appraisal"
 
 # Start debugger with binding.b [https://github.com/ruby/debug]
 gem "debug", ">= 1.0.0"
+
+gem "rspec" # rspec test group only or we get the "irb: warn: can't alias context from irb_context warning" when starting jets console
+gem "launchy"
+gem "capybara"

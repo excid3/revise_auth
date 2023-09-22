@@ -12,13 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: ['2.7', '3.0', '3.1', '3.2']
-        gemfile:
-          - rails_7_1
-          - rails_main
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
-      BUNDLE_PATH_RELATIVE_TO_CWD: true
+        ruby: ['3.2']
 
     steps:
       - uses: actions/checkout@v3
@@ -39,5 +33,7 @@ jobs:
           DATABASE_URL: "sqlite3:revise_auth_test"
           RAILS_ENV: test
         run: |
-          bundle exec rails db:test:prepare
-          bundle exec rails test
+          cd spec/dummy
+          bundle install
+          JETS_ENV=test jets db:create db:migrate
+          bundle exec rspec

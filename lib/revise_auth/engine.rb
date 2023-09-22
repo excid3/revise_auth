@@ -1,3 +1,4 @@
+require "jets"
 module ReviseAuth
   class Turbine < ::Jets::Turbine
     initializer :revise_auth_controller do

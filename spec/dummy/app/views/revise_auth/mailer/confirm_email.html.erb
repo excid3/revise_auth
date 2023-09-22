@@ -1,0 +1,7 @@
+<p>Welcome <%= @user %>!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<a href="<%=  profile_email_url() + @url %>">Confirm my account</a>
+
+<p>This link will expire in 24 hours.</p>

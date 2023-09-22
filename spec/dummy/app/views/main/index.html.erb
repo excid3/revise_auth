@@ -1,0 +1,15 @@
+<h1>Revise Auth</h1>
+<nav>
+  <%= link_to "Home", root_path %>
+
+  <% if user_signed_in? %>
+    <%= link_to "Profile", profile_path %>
+    <%= button_to "Log out", 'logout', method: :delete %>
+  <% else %>
+    <%= link_to "Sign Up", sign_up_path %>
+    <%= link_to "Log in", login_path %>
+  <% end %>
+</nav>
+<div>
+  <%= link_to "Authentication Required", authenticated_path %>
+</div>

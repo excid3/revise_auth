@@ -1,0 +1,32 @@
+<% content_for :form_block do %>
+  <div class="mb-4 text-center">
+    <h2 class="mb-px">Log In</h2>
+    <%= link_to "Sign Up", sign_up_path, class: "font-semibold" %>
+  </div>
+
+  <%= form_with(url: login_path, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: true, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: true, class: "form-control" %>
+    </div>
+
+      <div class="form-group">
+        <%= f.check_box :remember_me, class: "form-checkbox" %>
+        <%= f.label :remember_me, class: "inline-block" %>
+      </div>
+
+    <div class="form-group">
+      <%= f.submit "SIgn In", class: "btn btn-primary btn-expanded" %>
+    </div>
+  <% end %>
+
+<% end %>
+
+<%= render "revise_auth/shared/form_block" %>
+
+
