@@ -12,14 +12,12 @@ module ReviseAuth
         email
       end
 
+      normalizes :email, with: -> { _1.strip.downcase }
+      normalizes :unconfirmed_email, with: -> { _1.strip.downcase }
+
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
       validates_length_of :password, minimum: 12, allow_nil: true
-
-      before_validation do
-        email&.downcase!&.strip!
-        unconfirmed_email&.downcase!
-      end
     end
 
     # Generates a confirmation token and send email to the user
