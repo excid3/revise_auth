@@ -11,6 +11,6 @@ gem "importmap-rails"
 gem "standard"
 gem "appraisal"
 gem "debug", ">= 1.0.0"
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0.beta1"
 
 gemspec path: "../"
