@@ -4,13 +4,12 @@ module ReviseAuth
 
     included do |base|
       base.const_set :EMAIL_VERIFICATION_TOKEN_VALIDITY, 1.day
+      base.const_set :PASSWORD_RESET_TOKEN_VALIDITY, 1.hour
 
       has_secure_password
       has_secure_token :confirmation_token
 
-      PASSWORD_RESET_TOKEN_VALIDITY = 1.hour
-
-      generates_token_for :password_reset, expires_in: PASSWORD_RESET_TOKEN_VALIDITY do
+      generates_token_for :password_reset, expires_in: base.const_get(:PASSWORD_RESET_TOKEN_VALIDITY) do
         BCrypt::Password.new(password_digest).salt[-10..]
       end
 
