@@ -1,0 +1,16 @@
+pt:
+  revise_auth:
+    account_deleted: "A sua conta foi removida."
+    account_updated: "Conta atualizada com sucesso."
+
+    invalid_email_or_password: "Email ou password inválidos."
+    sign_up_or_login: "Registe-se ou clique em entrar para continuar."
+
+    # Password changes
+    password_changed: "A sua password foi alterada com sucesso."
+    incorrect_password: "A sua password atual está incorreta. Por favor tente de novo."
+
+    # Email confirmations
+    email_confirmed: "O seu endereço de email foi modificado com sucesso."
+    email_confirm_failed: "Não foi possível confirmar o endereço de email."
+    confirmation_email_sent: "Um email de confirmação foi enviado para %{email}"
