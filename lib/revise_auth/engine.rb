@@ -14,17 +14,5 @@ module ReviseAuth
         app.config.session_options.with_defaults! expire_after: 30.days
       end
     end
-
-    if Rails.gem_version < Gem::Version.new("7.1")
-      require "revise_auth/backports/token_for"
-
-      initializer "active_record.generated_token_verifier" do
-        config.after_initialize do |app|
-          ActiveSupport.on_load(:active_record) do
-            self.generated_token_verifier ||= app.message_verifier("active_record/token_for")
-          end
-        end
-      end
-    end
   end
 end
