@@ -22,4 +22,8 @@ class UserTest < ActiveSupport::TestCase
     user.valid?
     assert_equal "test@example.org", user.email
   end
+
+  test "authenticate_by" do
+    assert User.respond_to?(:authenticate_by)
+  end
 end
