@@ -21,12 +21,3 @@ class ActiveSupport::TestCase
     }
   end
 end
-
-class ActiveSupport::TestCase
-  def login(user, password: "password")
-    post login_path, params: {
-      email: user.email,
-      password: password
-    }
-  end
-end
