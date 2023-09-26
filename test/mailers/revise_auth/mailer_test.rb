@@ -1,32 +1,31 @@
 require "test_helper"
 class ReviseAuth::MailerTest < ActionMailer::TestCase
-  test "password_reset" do
-    user = users(:bob)
-    token = "s3c3tt0k3n"
+  setup do
+    @user = users(:bob)
+    @token = "s3c3tt0k3n"
+  end
 
-    email = ReviseAuth::Mailer.with(user:, token:).password_reset
+  test "password_reset" do
+    email = ReviseAuth::Mailer.with(user: @user, token: @token).password_reset
 
     assert_emails 1 do
       email.deliver_now
     end
 
-    assert_equal [user.email], email.to
-    assert_includes email.body.to_s, token
+    assert_equal [@user.email], email.to
+    assert_includes email.body.to_s, @token
   end
 
   test "confirm_email" do
-    user = users(:bob)
-    user.unconfirmed_email = "unconfirmed@email.com"
-    token = "s3c3tt0k3n"
+    @user.unconfirmed_email = "unconfirmed@email.com"
 
-    email = ReviseAuth::Mailer.with(user:, token:).confirm_email
+    email = ReviseAuth::Mailer.with(user: @user, token: @token).confirm_email
 
     assert_emails 1 do
       email.deliver_now
     end
 
-    assert_equal [user.email], email.to
     assert_equal ["unconfirmed@email.com"], email.to
-    assert_includes email.body.to_s, token
+    assert_includes email.body.to_s, @token
   end
 end
