@@ -49,7 +49,7 @@ module ReviseAuth
       reset_session
       Current.user = user
       session[:user_id] = user.id
-      session[:user_return_to ] = user_return_to
+      session[:user_return_to] = user_return_to
     end
 
     def logout
