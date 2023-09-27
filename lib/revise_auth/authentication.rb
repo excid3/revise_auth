@@ -56,14 +56,15 @@ module ReviseAuth
     end
 
     private
-      def redirect_to_login_with_stashed_location
-        stash_intended_location
-        redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login")
-      end
+    
+    def redirect_to_login_with_stashed_location
+      stash_intended_location
+      redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login")
+    end
 
-      # Store user intended url, so we can redirect him there after the login.
-      def stash_intended_location
-        session[:user_return_to] = request.original_url if request.get?
-      end
+    # Store user intended url, so we can redirect there after the login.
+    def stash_intended_location
+      session[:user_return_to] = request.original_url if request.get?
+    end
   end
 end
