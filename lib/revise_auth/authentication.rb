@@ -34,7 +34,7 @@ module ReviseAuth
 
     # Returns a user from session cookie
     def authenticated_user_from_session
-      user_id = request.session[:user_id]
+      user_id = session[:user_id]
       return unless user_id
       User.find_by(id: user_id)
     end
@@ -46,6 +46,7 @@ module ReviseAuth
       reset_session
 
       Current.user = user
+      reset_session
       session[:user_id] = user.id
     end
 

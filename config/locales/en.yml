@@ -9,6 +9,8 @@ en:
     # Password changes
     password_changed: "Your password has been changed successfully."
     incorrect_password: "Your current password is incorrect. Please try again."
+    password_link_invalid: "The provided password reset link is invalid."
+    password_reset_sent: "An email with password reset instructions has been sent if that account exists."
 
     # Email confirmations
     email_confirmed: "Your email address has been successfully confirmed."

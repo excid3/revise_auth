@@ -2,45 +2,37 @@ module ReviseAuth
   module Model
     extend ActiveSupport::Concern
 
-    included do
+    included do |base|
+      base.const_set :EMAIL_VERIFICATION_TOKEN_VALIDITY, 1.day
+      base.const_set :PASSWORD_RESET_TOKEN_VALIDITY, 1.hour
+
       has_secure_password
       has_secure_token :confirmation_token
 
+      generates_token_for :password_reset, expires_in: base.const_get(:PASSWORD_RESET_TOKEN_VALIDITY) do
+        BCrypt::Password.new(password_digest).salt[-10..]
+      end
+
+      generates_token_for :email_verification, expires_in: base.const_get(:EMAIL_VERIFICATION_TOKEN_VALIDITY) do
+        email
+      end
+
+      normalizes :email, with: -> { _1.strip.downcase }
+      normalizes :unconfirmed_email, with: -> { _1.strip.downcase }
+
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
-      validates_length_of :password, minimum: 12
-
-      before_save do
-        self.email = email.downcase
-        self.unconfirmed_email = unconfirmed_email&.downcase
-      end
+      validates_length_of :password, minimum: 12, allow_nil: true
     end
 
     # Generates a confirmation token and send email to the user
     def send_confirmation_instructions
-      update!(
-        confirmation_token: self.class.generate_unique_secure_token(length: ActiveRecord::SecureToken::MINIMUM_TOKEN_LENGTH),
-        confirmation_sent_at: Time.current
-      )
-      ReviseAuth::Mailer.with(user: self).confirm_email.deliver_later
+      token = generate_token_for(:email_verification)
+      ReviseAuth::Mailer.with(user: self, token: token).confirm_email.deliver_later
     end
 
-    # Confirms an email address change
     def confirm_email_change
-      if confirmation_period_expired?
-        false
-      else
-        update(
-          confirmed_at: Time.current,
-          email: unconfirmed_email,
-          unconfirmed_email: nil
-        )
-      end
-    end
-
-    # Checks whether the confirmation token is within the valid time
-    def confirmation_period_expired?
-      confirmation_sent_at.before?(1.day.ago)
+      update(confirmed_at: Time.current, email: unconfirmed_email)
     end
   end
 end

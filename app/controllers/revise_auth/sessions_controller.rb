@@ -3,8 +3,7 @@ class ReviseAuth::SessionsController < ReviseAuthController
   end
 
   def create
-    if (user = User.find_by(email: params[:email])&.authenticate(params[:password]))
-      after_login_path = session[:user_return_to] || root_path
+    if (user = User.authenticate_by(email: params[:email], password: params[:password]))
       login(user)
       redirect_to after_login_path
     else
@@ -16,5 +15,11 @@ class ReviseAuth::SessionsController < ReviseAuthController
   def destroy
     logout
     redirect_to root_path
+  end
+    
+  private
+
+  def after_login_path
+    session[:user_return_to] || root_path
   end
 end
