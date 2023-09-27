@@ -1,4 +1,5 @@
 require "test_helper"
+
 class ReviseAuth::SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should get login" do
     get login_url
@@ -20,5 +21,25 @@ class ReviseAuth::SessionsControllerTest < ActionDispatch::IntegrationTest
     session_id = session.id
     delete logout_url
     assert_not_equal session_id, session.id
+  end
+
+  test "stashes path when redirected to login" do
+    get settings_path
+    assert_redirected_to login_path
+    assert_equal settings_path, session[:user_return_to]
+  end
+
+  test "redirects to stashed location after successful login" do
+    get settings_path
+    post login_url, params: {email: "bob@bob.com", password: "password"}
+    assert_redirected_to settings_path
+  end
+
+  test "can override after_login_path in ApplicationController" do
+    ::ApplicationController.define_method(:after_login_path) { "/pricing" }
+    post login_url, params: {email: "bob@bob.com", password: "password"}
+    assert_redirected_to "/pricing"
+  ensure
+    ::ApplicationController.undef_method(:after_login_path)
   end
 end

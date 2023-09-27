@@ -22,7 +22,7 @@ module ReviseAuth
 
     # Authenticates a user or redirects to the login page
     def authenticate_user!
-      redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login") unless user_signed_in?
+      redirect_to_login_with_stashed_location unless user_signed_in?
     end
 
     # Authenticates the current user
@@ -40,17 +40,39 @@ module ReviseAuth
     end
 
     # Logs in the user
+    # - Reset the session to prevent session fixation
+    #   See: https://guides.rubyonrails.org/security.html#session-fixation-countermeasures
     # - Set Current.user for the current request
     # - Save a session cookie so the next request is authenticated
     def login(user)
-      Current.user = user
+      user_return_to = session[:user_return_to]
       reset_session
+      Current.user = user
       session[:user_id] = user.id
+      session[:user_return_to ] = user_return_to
     end
 
     def logout
-      Current.user = nil
       reset_session
+      Current.user = nil
+    end
+
+    def stash_return_to_location(path)
+      session[:user_return_to] = path
+    end
+
+    def redirect_to_login_with_stashed_location
+      stash_return_to_location(request.fullpath) if request.get?
+      redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login")
+    end
+
+    # Return true if it's a revise_auth_controller. false to all controllers unless
+    # the controllers defined inside revise_auth. Useful if you want to apply a before
+    # filter to all controllers, except the ones in revise_auth:
+    #
+    #   before_action :authenticate_user!, except: :revise_auth_controller?
+    def revise_auth_controller?
+      is_a?(::ReviseAuthController)
     end
   end
 end
