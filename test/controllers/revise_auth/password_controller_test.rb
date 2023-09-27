@@ -15,6 +15,16 @@ class ReviseAuth::PasswordControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to profile_url
   end
 
+  test "should not reset password with missing challenge" do
+    assert_no_changes -> { @user.reload.password_digest } do
+      patch profile_password_url, params: {user: {
+        password: "new-password", password_confirmation: "new-password"
+      }}
+    end
+
+    assert_response :unprocessable_entity
+  end
+
   test "should not reset password with incorrect challenge" do
     assert_no_changes -> { @user.reload.password_digest } do
       patch profile_password_url, params: {user: {
