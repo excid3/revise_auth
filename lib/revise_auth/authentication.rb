@@ -56,7 +56,7 @@ module ReviseAuth
     end
 
     private
-    
+
     def redirect_to_login_with_stashed_location
       stash_intended_location
       redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login")
