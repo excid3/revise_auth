@@ -1,0 +1,73 @@
+<main class="w-full flex-grow p-6">
+<div class="w-full mt-12">
+    <p class="text-xl pb-3 flex items-center">
+    <i class="fas fa-list mr-3"></i> User
+    </p>
+    <div class="bg-white overflow-auto">
+
+  <%= form_with model: @user, local: true, url: admin_users_path do |form| %>
+      <table class="text-left w-full border-collapse">
+        <thead>
+          <tr>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Created At</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">First Name</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Last Name</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Submit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-grey-lighter">
+             <%= form.hidden_field :id %>
+            <td class="py-4 px-6 border-b border-grey-light"><%= @user.created_at %></td>
+            <td class="py-4 px-6 border-b border-grey-light">
+              <%= form.text_field :first_name, autofocus: true, autocomplete: "name", placeholder: "Steve", class: "form-control" %>
+            </td>
+            <td class="py-4 px-6 border-b border-grey-light">
+              <%= form.text_field :last_name, autofocus: true, autocomplete: "name", placeholder: "Jobs", class: "form-control" %>
+            </td>
+            <td class="py-4 px-6 border-b border-grey-light">
+              <%= form.email_field :unconfirmed_email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
+            </td>
+            <td class="py-4 px-6 border-b border-grey-light">
+              <%= form.submit "Submit", class: "btn btn-primary btn-expanded" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  <% end %>
+    </div>
+  </div>
+
+  <div class="w-full mt-12">
+    <p class="text-xl pb-3 flex items-center">
+    <i class="fas fa-list mr-3"></i> ApiTokens
+    </p>
+    <div class="bg-white overflow-auto">
+      <table class="text-left w-full border-collapse">
+        <thead>
+          <tr>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Created At</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Expires At</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Token</th>
+            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tokens.each do |token| %>
+            <tr class="hover:bg-grey-lighter">
+              <td class="py-4 px-6 border-b border-grey-light"><%= token.created_at %></td>
+              <td class="py-4 px-6 border-b border-grey-light"><%= token.expires_at%></td>
+              <td class="py-4 px-6 border-b border-grey-light"><%= token.token %></td>
+              <td class="py-4 px-6 border-b border-grey-light">
+                <a data-confirm="Are you sure?" data-method="delete" class="btn btn-sm" href="/admin/users/<%=token.token%>">
+                  <i class="fa-regular fa-trash-can mr-3"></i>
+                </a>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

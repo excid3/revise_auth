@@ -1,0 +1,16 @@
+<header class="w-full bg-sidebar py-5 px-6 sm:hidden">
+  <div class="flex items-center justify-between">
+    <%= link_to "Admin", admin_path, class: "text-white text-3xl font-semibold uppercase hover:text-gray-300"%>
+
+    <button onclick="hideMenuMobile()" class="text-white text-3xl focus:outline-none">
+      <i id="bars" class="fas fa-bars" style="display: block;"></i>
+      <i id="times" class="fas fa-times" style="display: none;"></i>
+    </button>
+  </div>
+
+  <!-- Dropdown Nav -->
+  <nav id="dropdownNav" class="flex flex-col pt-4" style="display: none;">
+    <%= render partial: "admin/shared/nav_links" %>
+  </nav>
+</header>
+

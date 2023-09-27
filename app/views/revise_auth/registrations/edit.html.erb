@@ -2,18 +2,21 @@
   <div class="mb-4 text-center">
     <h2 class="mb-1">Profile</h2>
   </div>
-
-
   <%= form_with model: current_user, local: true, url: profile_email_path do |form| %>
     <%= render "shared/error_messages", resource: current_user  %>
     <div class="form-group">
-      <%= form.label :name, "Full name" %>
-      <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Steve Jobs", class: "form-control" %>
+      <%= form.label :first_name, "First name" %>
+      <%= form.text_field :first_name, autofocus: true, autocomplete: "name", placeholder: "Steve", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :last_name, "Last name" %>
+      <%= form.text_field :last_name, autofocus: true, autocomplete: "name", placeholder: "Jobs", class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= form.label :email %>
-      <%= form.email_field :email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
+      <%= form.email_field :unconfirmed_email, autocomplete: "email", placeholder: "you@example.com", class: "form-control" %>
     </div>
 
     <div class="mt-2 form-group">

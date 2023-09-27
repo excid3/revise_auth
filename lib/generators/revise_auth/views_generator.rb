@@ -17,6 +17,7 @@ module ReviseAuth
 
       def copy_controllers
         template "app/controllers/main_controller.rb", "app/controllers/main_controller.rb"
+        template "app/controllers/admin_controller.rb", "app/controllers/admin_controller.rb"
         template "app/controllers/revise_auth_controller.rb", "app/controllers/revise_auth_controller.rb"
         if options[:controllers]
           options[:controllers].each do |directory|
@@ -25,6 +26,7 @@ module ReviseAuth
         else
           directory "app/controllers/revise_auth"
           directory "app/controllers/api"
+          directory "app/controllers/admin"
         end
       end
 
@@ -34,7 +36,9 @@ module ReviseAuth
             directory "app/views/revise_auth/#{directory}"
           end
         else
+          directory "app/views/layouts"
           directory "app/views/revise_auth"
+          directory "app/views/admin"
           directory "app/views/main"
           directory "app/views/shared"
         end

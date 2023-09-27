@@ -3,7 +3,7 @@
 
   <% if user_signed_in? %>
     <%= link_to "Profile", profile_path %>
-    <%= button_to "Log out", 'logout', method: :delete %>
+    <%= button_to "Log out", '/logout', method: :delete %>
   <% else %>
     <%= link_to "Sign Up", sign_up_path %>
     <%= link_to "Log in", login_path %>

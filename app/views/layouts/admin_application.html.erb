@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <%= csrf_meta_tags %>
+  <title>Jets App</title>
+  <%= javascript_pack_tag "application" %>
+  <%= stylesheet_pack_tag "theme" %>
+
+   <link rel="shortcut icon" href="<%= favicon_path %>">
+  <style>
+      @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+      .font-family-karla { font-family: karla; }
+      .bg-sidebar { background: #3d68ff; }
+      .cta-btn { color: #3d68ff; }
+      .upgrade-btn { background: #1947ee; }
+      .upgrade-btn:hover { background: #0038fd; }
+      .active-nav-link { background: #1947ee; }
+      .nav-item:hover { background: #1947ee; }
+      .account-link:hover { background: #3d68ff; }
+  </style>
+
+</head>
+<body>
+  <div class="col-md-9 content-body">
+    <div class="bg-gray-100 font-family-karla flex">
+      <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+        <div class="p-6">
+          <%= link_to "Admin", admin_path, class: "text-white text-3xl font-semibold uppercase hover:text-gray-300"%>
+        </div>
+        <nav class="text-white text-base font-semibold pt-3">
+          <%= render partial: "admin/shared/nav_links" %>
+      </aside>
+      <div class="w-full flex flex-col h-screen overflow-y-hidden">
+        <!-- Desktop Header -->
+        <%= render partial: "admin/shared/desktop_header" %>
+        <!-- Mobile Header & Nav -->
+        <%= render partial: "admin/shared/mobile_header" %>
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- Font Awesome -->
+<script defer src="https://kit.fontawesome.com/0e5ab6a736.js" crossorigin="anonymous"></script>
+
+<script>
+  function hideMenuMobile() {
+    var x = document.getElementById("bars");
+    var y = document.getElementById("times");
+    var z = document.getElementById("dropdownNav");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      y.style.display = "none";
+      z.style.display = "none";
+    } else {
+      y.style.display = "block";
+      z.style.display = "block";
+      x.style.display = "none";
+    }
+  }
+
+  function hideMenu() {
+    var x = document.getElementById("menuBtn");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
+
+</html>

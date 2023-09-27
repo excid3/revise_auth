@@ -17,7 +17,12 @@ $ jets db:migrate
 $ jets g revise_auth:views
 ```
 
-Add ActiveRecord::Base.signed_id_verifier_secret = "custom_verfifier_secret" in your initializers. Set this as an env var
+Add
+```
+require "active_record"
+ActiveRecord::Base.signed_id_verifier_secret = "custom_verfifier_secret"
+```
+in your initializers. Set this as an env var
 
 
 Create your app/mailer/application_mailer.rb
@@ -45,7 +50,7 @@ ex:
     password:             'YOUR_PASS',
     authentication:       'plain'}
 ```
-  To get your stmp pass follow these steps
+To get your stmp pass follow these steps
 
 You need to make a password for specific app
 
