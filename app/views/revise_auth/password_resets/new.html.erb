@@ -1,0 +1,20 @@
+<h1>Send Password Reset Instructions</h1>
+
+<%= form_with model: @user, url: password_resets_path do |form| %>
+  <% if form.object.errors.any? %>
+    <ul>
+      <% form.object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true, autofocus: true %>
+  </div>
+
+  <div>
+    <%= form.button "Send Reset Instructions" %>
+  </div>
+<% end %>

@@ -5,4 +5,11 @@ class ReviseAuth::Mailer < ApplicationMailer
 
     mail to: @user.unconfirmed_email
   end
+
+  def password_reset
+    @user = params[:user]
+    @token = params[:token]
+
+    mail to: @user.email
+  end
 end
