@@ -16,7 +16,7 @@ class ReviseAuth::SessionsController < ReviseAuthController
     logout
     redirect_to root_path
   end
-    
+
   private
 
   def after_login_path
