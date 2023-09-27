@@ -41,6 +41,20 @@ $ rails g revise_auth:views
 
 This will copy the views into `app/views/revise_auth` in your application.
 
+### After Login Path
+
+After a user logs in they will be redirected to the stashed location or the root path, by default. When a GET request hits `authenticate_user!`, it will stash the request path in the session and redirect back after login.
+
+To override this, define `after_login_path` in your ApplicationController. You can also override `ReviseAuthController` and define it there.
+
+```ruby
+class ApplicationController < ActionController::Base
+  def after_login_path
+    root_path
+  end
+end
+```
+
 ## Contributing
 
 If you have an issue you'd like to submit, please do so using the issue tracker in GitHub. In order for us to help you in the best way possible, please be as detailed as you can.
