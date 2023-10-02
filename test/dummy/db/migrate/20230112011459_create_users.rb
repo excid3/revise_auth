@@ -11,6 +11,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.datetime :confirmation_sent_at
       t.string :unconfirmed_email
 
+      t.boolean :admin
+
       t.timestamps
     end
   end

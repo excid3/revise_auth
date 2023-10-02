@@ -8,6 +8,8 @@ module ReviseAuth
 
     include Authentication
 
+    delegate :session, to: :@request
+
     def initialize(request)
       @request = request
     end

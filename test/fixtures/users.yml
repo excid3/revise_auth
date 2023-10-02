@@ -1,3 +1,8 @@
 bob:
   email: bob@bob.com
   password_digest: <%= BCrypt::Password.create("password") %>
+
+admin:
+  email: admin@example.org
+  password_digest: <%= BCrypt::Password.create("password") %>
+  admin: true

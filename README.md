@@ -55,6 +55,22 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+### Routing Constraints
+
+You can use any of the authentication functionality in your routes using the `ReviseAuth::RouteConstraint` class.
+
+The following will draw routes only if the user is signed in:
+
+```ruby
+constraints ->(request) { ReviseAuth::RouteConstraint.new(request).current_user&.admin? } do
+  resource :admin
+end
+
+constraints ->(request) { ReviseAuth::RouteConstraint.new(request).user_signed_in? } do
+  resource :dashboard
+end
+```
+
 ## Contributing
 
 If you have an issue you'd like to submit, please do so using the issue tracker in GitHub. In order for us to help you in the best way possible, please be as detailed as you can.
