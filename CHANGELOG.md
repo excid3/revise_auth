@@ -1,5 +1,9 @@
 ### Unrelease
 
+### 0.4.1
+
+* Add `RouteConstraint` examples to README and tests
+
 ### 0.4.0
 
 * [Breaking] Require Rails 7.1 and higher

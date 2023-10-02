@@ -1,5 +1,7 @@
 module ActionDispatch::Routing
   class Mapper
+    # Adds helpers for config/routes.rb to constraint routes with authentication
+
     def revise_auth
       scope module: :revise_auth do
         revise_registration
@@ -21,10 +23,11 @@ module ActionDispatch::Routing
       end
     end
 
-    # Adds helpers for config/routes.rb to constraint routes with authentication
-    #
-    def authenticated
-      constraints ->(request) { ReviseAuth::RouteConstraint.new(request).user_signed_in? } do
+    def authenticated(block = nil)
+      constraints ->(request) {
+        rc = ReviseAuth::RouteConstraint.new(request)
+        rc.user_signed_in? && (block.nil? || block.call(rc.current_user))
+      } do
         yield
       end
     end

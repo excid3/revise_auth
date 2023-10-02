@@ -62,11 +62,11 @@ You can use any of the authentication functionality in your routes using the `Re
 The following will draw routes only if the user is signed in:
 
 ```ruby
-constraints ->(request) { ReviseAuth::RouteConstraint.new(request).current_user&.admin? } do
+authenticated ->{ _1.admin? } do
   resource :admin
 end
 
-constraints ->(request) { ReviseAuth::RouteConstraint.new(request).user_signed_in? } do
+authenticated do
   resource :dashboard
 end
 ```
