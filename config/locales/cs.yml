@@ -1,0 +1,16 @@
+cs:
+  revise_auth:
+    account_deleted: "Váš účet byl smazán."
+    account_updated: "Účet byl úspěšně aktualizován."
+
+    invalid_email_or_password: "Neplatný e-mail nebo heslo."
+    sign_up_or_login: "Pro pokračování se zaregistruje nebo přihlaste"
+
+    password_changed: "Vaše heslo bylo úspěšně změněno."
+    incorrect_password: "Vaše aktuální heslo je nesprávné. Zkuste to prosím znovu."
+    password_link_invalid: "Odkaz pro obnovení hesla je neplatný."
+    password_reset_sent: "E-mail s pokyny pro obnovení hesla byl odeslán."
+
+    email_confirmed: "Vaše e-mailová adresa byla úspěšně potvrzena."
+    email_confirm_failed: "Vaši e-mailovou adresu nelze potvrdit."
+    confirmation_email_sent: "Potvrzující e-mail byl odeslán na adresu %{email}"
