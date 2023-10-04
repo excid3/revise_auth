@@ -7,7 +7,6 @@ module ReviseAuth
       base.const_set :PASSWORD_RESET_TOKEN_VALIDITY, 1.hour
 
       has_secure_password
-      has_secure_token :confirmation_token
 
       generates_token_for :password_reset, expires_in: base.const_get(:PASSWORD_RESET_TOKEN_VALIDITY) do
         BCrypt::Password.new(password_digest).salt[-10..]

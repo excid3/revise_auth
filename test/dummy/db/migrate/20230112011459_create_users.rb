@@ -6,9 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :password_digest
 
-      t.string :confirmation_token
       t.datetime :confirmed_at
-      t.datetime :confirmation_sent_at
       t.string :unconfirmed_email
 
       t.boolean :admin

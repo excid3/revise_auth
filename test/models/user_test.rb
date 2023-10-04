@@ -5,6 +5,14 @@ class UserTest < ActiveSupport::TestCase
     refute User.new.valid?
   end
 
+  test "can create user" do
+    password = "password123456"
+
+    assert_difference "User.count", 1, "could not create a valid user" do
+      User.create(email: "test@example.org", password: password, password_confirmation: password)
+    end
+  end
+
   test "password required" do
     user = User.new(email: "test@example.org")
     user.save
