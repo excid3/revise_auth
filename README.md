@@ -9,20 +9,40 @@ A pure Ruby on Rails authentication system like Devise.
 Add this line to your application's Gemfile:
 
 ```ruby
-bundle add "revise_auth"
+gem "revise_auth"
 ```
 
-And then execute the following to generate a `User` model (optionally adding other fields such as `first_name` and `last_name`):
+and then run `bundle install`.
+
+Or run this command:
+
 ```bash
-$ rails g revise_auth:model User first_name last_name
-$ rails db:migrate
+bundle add "revise_auth"
 ```
 
 ## Usage
 
-ReviseAuth is designed around a single `User` model.
+### Models
 
-### Roles / Other User Types
+ReviseAuth is designed around a single `User` model. Execute the following to generate the `User` model:
+
+```bash
+$ rails g revise_auth:model
+```
+
+Optionally, you can add other fields such as `first_name` and `last_name`:
+
+```bash
+$ rails g revise_auth:model User first_name last_name
+```
+
+And then run:
+
+```bash
+$ rails db:migrate
+```
+
+#### Roles / Other User Types
 
 ReviseAuth only works with a single model to keep things simple. We recommend adding roles to handle other types of users.
 
@@ -30,6 +50,44 @@ You can accomplish this in a few different ways:
 
 * A `roles` attribute on the `User` model
 * The Rolify gem
+
+### Routes
+
+Tell your router to add ReviseAuth's controllers:
+
+```
+# config/routes.rb
+
+revise_auth
+```
+
+You will want to define a root path. After login (see below), the user will be redirected to the root path.
+
+### Filters and Helpers
+
+To protect your actions from unauthenticated users, you can use the `authenticate_user!` filter:
+
+```ruby
+before_action :authenticate_user!
+```
+
+In your views, you can use `user_signed_in?` to verify if a user is signed in and `current_user` for using the signed in user.
+
+### Mailer
+
+ReviseAuth will send some emails:
+
+* password reset
+* confirmation instructions
+
+Make sure you have the default url options set:
+
+```ruby
+# in config/environments/development.rb
+config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+```
+
+Note: This should be set in all environments.
 
 ## Customizing
 
@@ -45,7 +103,7 @@ This will copy the views into `app/views/revise_auth` in your application.
 
 After a user logs in they will be redirected to the stashed location or the root path, by default. When a GET request hits `authenticate_user!`, it will stash the request path in the session and redirect back after login.
 
-To override this, define `after_login_path` in your ApplicationController. You can also override `ReviseAuthController` and define it there.
+To override this, define `after_login_path` in your `ApplicationController`. You can also override `ReviseAuthController` and define it there.
 
 ```ruby
 class ApplicationController < ActionController::Base
