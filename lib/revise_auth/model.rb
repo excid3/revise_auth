@@ -30,6 +30,12 @@ module ReviseAuth
       ReviseAuth::Mailer.with(user: self, token: token).confirm_email.deliver_later
     end
 
+    # Generates a password reset token and send email to the user
+    def send_password_reset_instructions
+      token = generate_token_for(:password_reset)
+      ReviseAuth::Mailer.with(user: self, token: token).password_reset.deliver_later
+    end
+
     def confirm_email_change
       update(confirmed_at: Time.current, email: unconfirmed_email)
     end
