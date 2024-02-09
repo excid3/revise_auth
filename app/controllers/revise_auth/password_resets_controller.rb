@@ -7,7 +7,7 @@ class ReviseAuth::PasswordResetsController < ReviseAuthController
 
   def create
     user = User.find_by(email: user_params[:email])
-    user.send_password_reset_instructions if user.present?
+    user&.send_password_reset_instructions
 
     flash[:notice] = I18n.t("revise_auth.password_reset_sent")
     redirect_to login_path
