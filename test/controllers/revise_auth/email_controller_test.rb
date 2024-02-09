@@ -22,6 +22,7 @@ class ReviseAuth::EmailControllerTest < ActionDispatch::IntegrationTest
     assert_changes -> { @user.reload.email } do
       get profile_email_url, params: {confirmation_token: token}
     end
+    assert_nil @user.reload.unconfirmed_email
     assert_redirected_to root_url
   end
 

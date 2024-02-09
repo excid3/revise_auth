@@ -31,7 +31,7 @@ module ReviseAuth
     end
 
     def confirm_email_change
-      update(confirmed_at: Time.current, email: unconfirmed_email)
+      update(confirmed_at: Time.current, email: unconfirmed_email, unconfirmed_email: nil)
     end
   end
 end
