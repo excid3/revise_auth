@@ -13,4 +13,4 @@ cs:
 
     email_confirmed: "Vaše e-mailová adresa byla úspěšně potvrzena."
     email_confirm_failed: "Vaši e-mailovou adresu nelze potvrdit."
-    confirmation_email_sent: "Potvrzující e-mail byl odeslán na adresu %{email}"
+    confirmation_email_sent: "Potvrzující e-mail byl odeslán na adresu %{email}."

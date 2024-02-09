@@ -13,4 +13,4 @@ el:
     # Email confirmations
     email_confirmed: "Η διεύθυνση email σας επιβεβαιώθηκε επιτυχώς."
     email_confirm_failed: "Δεν είναι δυνατή η επιβεβαίωση της διεύθυνσης email."
-    confirmation_email_sent: "Ένα email επιβεβαίωσης έχει σταλεί στο %{email}"
+    confirmation_email_sent: "Ένα email επιβεβαίωσης έχει σταλεί στο %{email}."
