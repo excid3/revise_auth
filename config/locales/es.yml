@@ -1,0 +1,18 @@
+en:
+  revise_auth:
+    account_deleted: "Tu cuenta ha sido eliminada."
+    account_updated: "Cuenta actualizada exitosamente."
+
+    invalid_email_or_password: "Email o contraseña inválidas."
+    sign_up_or_login: "Registrate o inicia sesión para continuar."
+
+    # Password changes
+    password_changed: "Tu contraseña ha sido actualizada exitosamente."
+    incorrect_password: "Tu contraseña actual es incorrecta. Por favor intenta nuevamente."
+    password_link_invalid: "El enlace de reseteo de contraseña es inválido."
+    password_reset_sent: "Ha sido enviado un email de reseteo de contraseña si esa cuenta existe."
+
+    # Email confirmations
+    email_confirmed: "Tu dirección de email ha sido confirmada exitosamente."
+    email_confirm_failed: "No es posible confirmar la dirección de email."
+    confirmation_email_sent: "Un email de confirmación ha sido enviado a %{email}."

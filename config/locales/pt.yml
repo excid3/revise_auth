@@ -13,4 +13,4 @@ pt:
     # Email confirmations
     email_confirmed: "O seu endereço de email foi modificado com sucesso."
     email_confirm_failed: "Não foi possível confirmar o endereço de email."
-    confirmation_email_sent: "Um email de confirmação foi enviado para %{email}"
+    confirmation_email_sent: "Um email de confirmação foi enviado para %{email}."

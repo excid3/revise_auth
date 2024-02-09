@@ -13,4 +13,4 @@ fr:
     # Email confirmations
     email_confirmed: "Votre adresse email vient d'être confirmé."
     email_confirm_failed: "Impossible de confirmer votre adresse email."
-    confirmation_email_sent: "Un email de confirmation vient d'être envoyé à %{email}"
+    confirmation_email_sent: "Un email de confirmation vient d'être envoyé à %{email}."

@@ -15,4 +15,4 @@ en:
     # Email confirmations
     email_confirmed: "Your email address has been successfully confirmed."
     email_confirm_failed: "Unable to confirm email address."
-    confirmation_email_sent: "A confirmation email has been sent to %{email}"
+    confirmation_email_sent: "A confirmation email has been sent to %{email}."
