@@ -1,16 +1,64 @@
+---
 zh-TW:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_challenge: Current password
+        password_confirmation: Password confirmation
   revise_auth:
-    account_deleted: "您的帳號已經被刪除"
-    account_updated: "帳號更新成功"
-
-    invalid_email_or_password: "錯誤的信箱或是密碼"
-    sign_up_or_login: "需要註冊或是登入才能進行"
-
-    # Password changes
-    password_changed: "您的密碼已經成功地更新"
-    incorrect_password: "您現在輸入的密碼不正確, 請重新嘗試"
-
-    # Email confirmations
-    email_confirmed: "您的電子信箱已經成功地通過驗證"
-    email_confirm_failed: "無法驗證您的電子信箱"
-    confirmation_email_sent: "電子信箱驗證信已寄往 %{email}"
+    email:
+      show:
+        email_confirm_failed: 無法驗證您的電子信箱
+        email_confirmed: 您的電子信箱已經成功地通過驗證
+      update:
+        confirmation_email_sent: 電子信箱驗證信已寄往 %{email}
+    mailer:
+      confirm_email:
+        confirm: Confirm my account
+        confirm_below: 'You can confirm your account email through the link below:'
+        expiration_notice: This link will expire in 24 hours.
+        welcome: Welcome %{email}!
+      password_reset:
+        expiration_notice: This link will expire in 1 hour.
+        reset_password: Reset my password
+        reset_password_below: We've received a password reset request for your login. If this was you just visit the link below to finish up. If it wasn't you, you can simply ignore this email.
+    password:
+      update:
+        incorrect_password: 您現在輸入的密碼不正確, 請重新嘗試
+        password_changed: 您的密碼已經成功地更新
+    password_resets:
+      create:
+        password_reset_sent: An email with password reset instructions has been sent if that account exists.
+      edit:
+        invalid_password_link: The provided password reset link is invalid.
+        reset_password: Reset password
+      new:
+        send_password_reset_instructions: Send Password Reset Instructions
+    registrations:
+      destroy:
+        account_deleted: 您的帳號已經被刪除
+      edit:
+        change_email_address: Change Email Address
+        change_password: Change Password
+        confirm: Are you sure?
+        confirmation_instructions: To change your email, we will send a confirmation email to your new address to complete the change.
+        current_email_address: 'Your email address is: %{email}.'
+        delete_account: Delete my account
+        new_email: New Email
+        new_password: New password
+        profile: Profile
+        save: Save Changes
+        waiting_confirmation: Waiting for confirmation of %{email}.
+      new:
+        sign_up: Sign up
+      update:
+        account_updated: 帳號更新成功
+    sessions:
+      create:
+        invalid_email_or_password: 錯誤的信箱或是密碼
+      new:
+        log_in: Log in
+        reset_password: Reset your password
+    sign_up_or_login: 需要註冊或是登入才能進行

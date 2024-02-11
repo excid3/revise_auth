@@ -1,11 +1,11 @@
-<h1>Profile</h1>
+<h1><%=t ".profile" %></h1>
 
 <%= form_with model: current_user, url: profile_email_path do |form| %>
   <fieldset>
-    <legend>Change Email Address</legend>
+    <legend><%=t ".change_email_address" %></legend>
 
     <% if current_user.unconfirmed_email? %>
-      <p>Waiting for confirmation of <%= current_user.unconfirmed_email %></p>
+      <p><%=t ".waiting_confirmation", email: current_user.unconfirmed_email %></p>
     <% end %>
 
     <% if form.object.errors.any? %>
@@ -16,23 +16,23 @@
       </ul>
     <% end %>
 
-    <p>Your email address is: <%= current_user.email %></p>
-    <p>To change your email, we will send a confirmation email to your new address to complete the change.</p>
+    <p><%=t ".current_email_address", email: current_user.email %></p>
+    <p><%=t ".confirmation_instructions" %></p>
 
     <div>
-      <%= form.label :unconfirmed_email, "Email address" %>
+      <%= form.label :unconfirmed_email, t(".new_email") %>
       <%= form.email_field :unconfirmed_email, required: true %>
     </div>
 
     <div>
-      <%= form.button "Save Changes" %>
+      <%= form.button t(".save") %>
     </div>
   </fieldset>
 <% end %>
 
 <%= form_with model: current_user, url: profile_password_path do |form| %>
   <fieldset>
-    <legend>Change Password</legend>
+    <legend><%=t ".change_password" %></legend>
 
     <% if form.object.errors.any? %>
       <ul>
@@ -43,12 +43,12 @@
     <% end %>
 
     <div>
-      <%= form.label :password_challenge, "Current password" %>
+      <%= form.label :password_challenge %>
       <%= form.password_field :password_challenge, required: true %>
     </div>
 
     <div>
-      <%= form.label :password, "New password" %>
+      <%= form.label :password, t(".new_password") %>
       <%= form.password_field :password, required: true %>
     </div>
 
@@ -58,14 +58,14 @@
     </div>
 
     <div>
-      <%= form.button "Save Changes" %>
+      <%= form.button t(".save") %>
     </div>
   </fieldset>
 <% end %>
 
 <%= form_with url: profile_path, method: :delete do |form| %>
   <fieldset>
-    <legend>Delete my account</legend>
-    <%= form.button "Delete account", data: { turbo_confirm: "Are you sure?" } %>
+    <legend><%=t ".delete_account" %></legend>
+    <%= form.button t(".delete_account"), data: { turbo_confirm: t(".confirm") } %>
   </fieldset>
 <% end %>

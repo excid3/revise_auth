@@ -1,16 +1,64 @@
+---
 cs:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_challenge: Current password
+        password_confirmation: Password confirmation
   revise_auth:
-    account_deleted: "Váš účet byl smazán."
-    account_updated: "Účet byl úspěšně aktualizován."
-
-    invalid_email_or_password: "Neplatný e-mail nebo heslo."
-    sign_up_or_login: "Pro pokračování se zaregistruje nebo přihlaste"
-
-    password_changed: "Vaše heslo bylo úspěšně změněno."
-    incorrect_password: "Vaše aktuální heslo je nesprávné. Zkuste to prosím znovu."
-    password_link_invalid: "Odkaz pro obnovení hesla je neplatný."
-    password_reset_sent: "E-mail s pokyny pro obnovení hesla byl odeslán."
-
-    email_confirmed: "Vaše e-mailová adresa byla úspěšně potvrzena."
-    email_confirm_failed: "Vaši e-mailovou adresu nelze potvrdit."
-    confirmation_email_sent: "Potvrzující e-mail byl odeslán na adresu %{email}."
+    email:
+      show:
+        email_confirm_failed: Vaši e-mailovou adresu nelze potvrdit.
+        email_confirmed: Vaše e-mailová adresa byla úspěšně potvrzena.
+      update:
+        confirmation_email_sent: Potvrzující e-mail byl odeslán na adresu %{email}.
+    mailer:
+      confirm_email:
+        confirm: Confirm my account
+        confirm_below: 'You can confirm your account email through the link below:'
+        expiration_notice: This link will expire in 24 hours.
+        welcome: Welcome %{email}!
+      password_reset:
+        expiration_notice: This link will expire in 1 hour.
+        reset_password: Reset my password
+        reset_password_below: We've received a password reset request for your login. If this was you just visit the link below to finish up. If it wasn't you, you can simply ignore this email.
+    password:
+      update:
+        incorrect_password: Vaše aktuální heslo je nesprávné. Zkuste to prosím znovu.
+        password_changed: Vaše heslo bylo úspěšně změněno.
+    password_resets:
+      create:
+        password_reset_sent: E-mail s pokyny pro obnovení hesla byl odeslán.
+      edit:
+        invalid_password_link: Odkaz pro obnovení hesla je neplatný.
+        reset_password: Reset password
+      new:
+        send_password_reset_instructions: Send Password Reset Instructions
+    registrations:
+      destroy:
+        account_deleted: Váš účet byl smazán.
+      edit:
+        change_email_address: Change Email Address
+        change_password: Change Password
+        confirm: Are you sure?
+        confirmation_instructions: To change your email, we will send a confirmation email to your new address to complete the change.
+        current_email_address: 'Your email address is: %{email}.'
+        delete_account: Delete my account
+        new_email: New Email
+        new_password: New password
+        profile: Profile
+        save: Save Changes
+        waiting_confirmation: Waiting for confirmation of %{email}.
+      new:
+        sign_up: Sign up
+      update:
+        account_updated: Účet byl úspěšně aktualizován.
+    sessions:
+      create:
+        invalid_email_or_password: Neplatný e-mail nebo heslo.
+      new:
+        log_in: Log in
+        reset_password: Reset your password
+    sign_up_or_login: Pro pokračování se zaregistruje nebo přihlaste

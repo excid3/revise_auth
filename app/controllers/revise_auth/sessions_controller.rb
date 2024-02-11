@@ -7,7 +7,7 @@ class ReviseAuth::SessionsController < ReviseAuthController
       login(user)
       redirect_to resolve_after_login_path
     else
-      flash[:alert] = I18n.t("revise_auth.invalid_email_or_password")
+      flash[:alert] = t(".invalid_email_or_password")
       render :new, status: :unprocessable_entity
     end
   end

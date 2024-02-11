@@ -9,7 +9,7 @@ class ReviseAuth::PasswordResetsController < ReviseAuthController
     user = User.find_by(email: user_params[:email])
     user&.send_password_reset_instructions
 
-    flash[:notice] = I18n.t("revise_auth.password_reset_sent")
+    flash[:notice] = t(".password_reset_sent")
     redirect_to login_path
   end
 
@@ -18,7 +18,7 @@ class ReviseAuth::PasswordResetsController < ReviseAuthController
 
   def update
     if @user.update(password_params)
-      flash[:notice] = I18n.t("revise_auth.password_changed")
+      flash[:notice] = t("revise_auth.password.update.password_changed")
       redirect_to login_path
     else
       render :edit, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class ReviseAuth::PasswordResetsController < ReviseAuthController
 
     return if @user.present?
 
-    flash[:alert] = I18n.t("revise_auth.password_link_invalid")
+    flash[:alert] = t(".invalid_password_link")
     redirect_to new_password_reset_path
   end
 

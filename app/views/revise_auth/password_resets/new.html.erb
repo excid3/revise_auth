@@ -1,4 +1,4 @@
-<h1>Send Password Reset Instructions</h1>
+<h1><%=t ".send_password_reset_instructions" %></h1>
 
 <%= form_with model: @user, url: password_resets_path do |form| %>
   <% if form.object.errors.any? %>
@@ -15,6 +15,6 @@
   </div>
 
   <div>
-    <%= form.button "Send Reset Instructions" %>
+    <%= form.button t(".send_password_reset_instructions") %>
   </div>
 <% end %>

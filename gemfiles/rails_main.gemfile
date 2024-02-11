@@ -10,6 +10,8 @@ gem "turbo-rails"
 gem "importmap-rails"
 gem "standard"
 gem "appraisal"
+gem "i18n-tasks"
+gem "highline", "~> 2.0"
 gem "debug", ">= 1.0.0"
 gem "rails", git: "https://github.com/rails/rails.git"
 
