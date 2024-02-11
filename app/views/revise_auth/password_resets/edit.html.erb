@@ -1,6 +1,6 @@
 <h1>Reset Your Password</h1>
 
-<%= form_with model: @user, url: sign_up_path do |form| %>
+<%= form_with model: @user, url: password_reset_path do |form| %>
   <% if form.object.errors.any? %>
     <ul>
       <% form.object.errors.full_messages.each do |message| %>
