@@ -91,6 +91,8 @@ Note: This should be set in all environments.
 
 ## Customizing
 
+### Views
+
 To customize views, you can run:
 
 ```bash
@@ -98,6 +100,24 @@ $ rails g revise_auth:views
 ```
 
 This will copy the views into `app/views/revise_auth` in your application.
+
+### Controllers
+
+If your User model has additional fields and you want to customize your views to allow filling them up during sign up or editing your profile, you need to permit those additional fields.
+
+To do this, define `sign_up_params` and/or `profile_params` in your `ApplicationController` to allow those additional attributes during sign up or profile edit, respectively. You can also override `ReviseAuthController` and define it there.
+
+```ruby
+class ApplicationController < ActionController::Base
+  def sign_up_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def profile_params
+    params.require(:user).permit(:first_name, :last_name)
+  end
+end
+```
 
 ### After Login Path
 
