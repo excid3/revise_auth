@@ -1,4 +1,4 @@
-🚚 Your Revise auth database model has been generated!
+🚚 Your ReviseAuth User has been generated!
 
 Next step:
   Run "rails db:migrate"

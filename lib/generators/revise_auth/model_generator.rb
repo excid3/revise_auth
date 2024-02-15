@@ -1,32 +1,28 @@
 module ReviseAuth
   module Generators
-    class ModelGenerator < Rails::Generators::NamedBase
-      include Rails::Generators::ResourceHelpers
-
-      desc "Generates a model for authentication, default User"
+    class ModelGenerator < Rails::Generators::Base
+      desc "Generates the User model for authentication"
 
       source_root File.expand_path("templates", __dir__)
 
-      argument :name, required: false, default: "User"
       argument :attributes, type: :array, default: [], banner: "field:type field:type"
 
       def initialize(args, *options)
-        @original_attributes = args[1..] || []
+        @original_attributes = args
         super
       end
 
       def generate_model
-        generate :model, name, *model_attributes
+        generate :model, "User", *model_attributes
+      end
+
+      def change_attributes_null
+        insert_into_file migration_path, ", null: false", after: "t.string :email", force: true
+        insert_into_file migration_path, ", null: false", after: "t.string :password_digest", force: true
       end
 
       def add_revise_auth_model
-        inject_into_class model_path, class_name, "  include ReviseAuth::Model\n"
-      end
-
-      def add_uniq_to_email_index
-        insert_into_file migration_path, after: "#{name.downcase.pluralize}, :email", force: true do
-          ", unique: true"
-        end
+        inject_into_class model_path, "User", "  include ReviseAuth::Model\n"
       end
 
       def done
@@ -40,12 +36,12 @@ module ReviseAuth
       end
 
       def model_path
-        @model_path ||= File.join("app", "models", "#{file_path}.rb")
+        @model_path ||= File.join("app", "models", "user.rb")
       end
 
       def model_attributes
         [
-          "email:string:index",
+          "email:string:uniq",
           "password_digest:string",
           "confirmed_at:datetime",
           "unconfirmed_email:string"
