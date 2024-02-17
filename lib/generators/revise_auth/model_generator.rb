@@ -25,6 +25,10 @@ module ReviseAuth
         inject_into_class model_path, "User", "  include ReviseAuth::Model\n"
       end
 
+      def copy_initializer
+        template "initializer.rb", "config/initializers/revise_auth.rb"
+      end
+
       def done
         readme "README" if behavior == :invoke
       end
