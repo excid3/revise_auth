@@ -20,7 +20,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
 
   def update
     if current_user.update(profile_params)
-      redirect_to profile_path, notice: I18n.t("revise_auth.account_updated")
+      redirect_to profile_path, notice: t(".account_updated")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
   def destroy
     current_user.destroy
     logout
-    redirect_to root_path, status: :see_other, alert: I18n.t("revise_auth.account_deleted")
+    redirect_to root_path, status: :see_other, alert: t(".account_deleted")
   end
 
   private

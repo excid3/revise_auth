@@ -1,16 +1,64 @@
+---
 de:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_challenge: Current password
+        password_confirmation: Password confirmation
   revise_auth:
-    account_deleted: "Dein Account wurde gelöscht."
-    account_updated: "Account wurde erfolgreich aktualisiert."
-
-    invalid_email_or_password: "Ungültige Email oder Passwort."
-    sign_up_or_login: "Registrieren oder anmelden um fortzufahren."
-
-    # Password changes
-    password_changed: "Dein Passwort wurde erfolgreich geändert."
-    incorrect_password: "Das Passwort ist ungültig. Bitte versuche es erneut."
-
-    # Email confirmations
-    email_confirmed: "Deine Email wurde erfogreich bestätigt."
-    email_confirm_failed: "Email Adresse kann nicht bestätigt werden."
-    confirmation_email_sent: "Eine Bestätigungsemail wurde versandt an %{email}."
+    email:
+      show:
+        email_confirm_failed: Email Adresse kann nicht bestätigt werden.
+        email_confirmed: Deine Email wurde erfogreich bestätigt.
+      update:
+        confirmation_email_sent: Eine Bestätigungsemail wurde versandt an %{email}.
+    mailer:
+      confirm_email:
+        confirm: Confirm my account
+        confirm_below: 'You can confirm your account email through the link below:'
+        expiration_notice: This link will expire in 24 hours.
+        welcome: Welcome %{email}!
+      password_reset:
+        expiration_notice: This link will expire in 1 hour.
+        reset_password: Reset my password
+        reset_password_below: We've received a password reset request for your login. If this was you just visit the link below to finish up. If it wasn't you, you can simply ignore this email.
+    password:
+      update:
+        incorrect_password: Das Passwort ist ungültig. Bitte versuche es erneut.
+        password_changed: Dein Passwort wurde erfolgreich geändert.
+    password_resets:
+      create:
+        password_reset_sent: An email with password reset instructions has been sent if that account exists.
+      edit:
+        invalid_password_link: The provided password reset link is invalid.
+        reset_password: Reset password
+      new:
+        send_password_reset_instructions: Send Password Reset Instructions
+    registrations:
+      destroy:
+        account_deleted: Dein Account wurde gelöscht.
+      edit:
+        change_email_address: Change Email Address
+        change_password: Change Password
+        confirm: Are you sure?
+        confirmation_instructions: To change your email, we will send a confirmation email to your new address to complete the change.
+        current_email_address: 'Your email address is: %{email}.'
+        delete_account: Delete my account
+        new_email: New Email
+        new_password: New password
+        profile: Profile
+        save: Save Changes
+        waiting_confirmation: Waiting for confirmation of %{email}.
+      new:
+        sign_up: Sign up
+      update:
+        account_updated: Account wurde erfolgreich aktualisiert.
+    sessions:
+      create:
+        invalid_email_or_password: Ungültige Email oder Passwort.
+      new:
+        log_in: Log in
+        reset_password: Reset your password
+    sign_up_or_login: Registrieren oder anmelden um fortzufahren.
