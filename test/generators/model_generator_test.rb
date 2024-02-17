@@ -13,8 +13,9 @@ class ModelGeneratorTest < Rails::Generators::TestCase
   end
 
   test "migration is created with user attributes" do
-    run_generator ["first_name:string", "last_name:string"]
-    assert_migration "db/migrate/create_users.rb", /first_name/
-    assert_migration "db/migrate/create_users.rb", /last_name/
+    run_generator ["first_name:string", "last_name:string", "admin:boolean"]
+    assert_migration "db/migrate/create_users.rb", /t\.string :first_name/
+    assert_migration "db/migrate/create_users.rb", /t\.string :last_name/
+    assert_migration "db/migrate/create_users.rb", /t\.boolean :admin/
   end
 end
