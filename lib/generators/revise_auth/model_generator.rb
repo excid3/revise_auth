@@ -7,7 +7,7 @@ module ReviseAuth
 
       argument :attributes, type: :array, default: [], banner: "field[:type][:index] field[:type][:index]"
       hook_for :orm, required: true, desc: "ORM to be invoked" do |instance, model|
-        instance.invoke model, [ "User", "email:string:uniq", "password_digest:string", "confirmed_at:datetime", "unconfirmed_email:string", *instance.attributes ]
+        instance.invoke model, ["User", "email:string:uniq", "password_digest:string", "confirmed_at:datetime", "unconfirmed_email:string", *instance.attributes]
       end
 
       def change_attributes_null
