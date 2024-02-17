@@ -17,8 +17,8 @@ module ReviseAuth
       end
 
       def change_attributes_null
-        insert_into_file migration_path, ", null: false", after: "t.string :email", force: true
-        insert_into_file migration_path, ", null: false", after: "t.string :password_digest", force: true
+        insert_into_file migration_path, ", null: false", after: "t.string :email"
+        insert_into_file migration_path, ", null: false", after: "t.string :password_digest"
       end
 
       def add_revise_auth_model
