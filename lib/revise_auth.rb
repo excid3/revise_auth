@@ -7,4 +7,9 @@ module ReviseAuth
   autoload :Current, "revise_auth/current"
   autoload :Model, "revise_auth/model"
   autoload :RouteConstraint, "revise_auth/route_constraint"
+
+  include ActiveSupport::Configurable
+
+  config_accessor :sign_up_params, default: [:name, :email, :password, :password_confirmation]
+  config_accessor :update_params, default: [:name]
 end
