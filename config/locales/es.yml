@@ -1,18 +1,64 @@
-en:
+---
+es:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Contraseña
+        password_challenge: Contraseña actual
+        password_confirmation: Confirmar contraseña
   revise_auth:
-    account_deleted: "Tu cuenta ha sido eliminada."
-    account_updated: "Cuenta actualizada exitosamente."
-
-    invalid_email_or_password: "Email o contraseña inválidas."
-    sign_up_or_login: "Registrate o inicia sesión para continuar."
-
-    # Password changes
-    password_changed: "Tu contraseña ha sido actualizada exitosamente."
-    incorrect_password: "Tu contraseña actual es incorrecta. Por favor intenta nuevamente."
-    password_link_invalid: "El enlace de reseteo de contraseña es inválido."
-    password_reset_sent: "Ha sido enviado un email de reseteo de contraseña si esa cuenta existe."
-
-    # Email confirmations
-    email_confirmed: "Tu dirección de email ha sido confirmada exitosamente."
-    email_confirm_failed: "No es posible confirmar la dirección de email."
-    confirmation_email_sent: "Un email de confirmación ha sido enviado a %{email}."
+    email:
+      show:
+        email_confirm_failed: No es posible confirmar la dirección de email.
+        email_confirmed: Tu dirección de email ha sido confirmada exitosamente.
+      update:
+        confirmation_email_sent: Un email de confirmación ha sido enviado a %{email}.
+    mailer:
+      confirm_email:
+        confirm: Confirmar mi cuenta
+        confirm_below: 'Podés confirmar el email de tu cuenta mediante el siguiente enlace:'
+        expiration_notice: Este enlace expirará en 24 horas.
+        welcome: Bienvenido %{email}!
+      password_reset:
+        expiration_notice: Este enlace expirará en 1 hora.
+        reset_password: Resetear mi contraseña
+        reset_password_below: Recibimos una solicitud de reseteo de contraseña para tu cuenta. Si fuiste vos, visitá el siguiente enlace para finalizar. Si no fuiste vos, podés ignorar este correo.
+    password:
+      update:
+        incorrect_password: Tu contraseña actual es incorrecta. Por favor intenta nuevamente.
+        password_changed: Tu contraseña ha sido actualizada exitosamente.
+    password_resets:
+      create:
+        password_reset_sent: Ha sido enviado un email de reseteo de contraseña si esa cuenta existe.
+      edit:
+        invalid_password_link: El enlace de reseteo de contraseña es inválido.
+        reset_password: Resetear contraseña
+      new:
+        send_password_reset_instructions: Enviar instrucciones para resetear la contraseña
+    registrations:
+      destroy:
+        account_deleted: Tu cuenta ha sido eliminada.
+      edit:
+        change_email_address: Cambiar dirección de correo
+        change_password: Cambiar contraseña
+        confirm: Estás seguro?
+        confirmation_instructions: Para cambiar tu dirección de email, enviaremos un email de confirmación a tu nueva dirección para completar el cambio.
+        current_email_address: 'Tu dirección de correo es: %{email}.'
+        delete_account: Eliminar mi cuenta
+        new_email: Nuevo email
+        new_password: Nueva contraseño
+        profile: Perfil
+        save: Guardar cambios
+        waiting_confirmation: Esperando confirmación de %{email}.
+      new:
+        sign_up: Registrate
+      update:
+        account_updated: Cuenta actualizada exitosamente.
+    sessions:
+      create:
+        invalid_email_or_password: Email o contraseña inválidas.
+      new:
+        log_in: Iniciar sesión
+        reset_password: Resetear contraseña
+    sign_up_or_login: Registrate o inicia sesión para continuar.
