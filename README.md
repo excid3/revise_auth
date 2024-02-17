@@ -99,6 +99,17 @@ $ rails g revise_auth:views
 
 This will copy the views into `app/views/revise_auth` in your application.
 
+### Form Permitted Params
+
+To customize the form parameters, you can add/remove params in `config/initializers/revise_auth.rb`
+
+```ruby
+ReviseAuth.configure do |config|
+  config.sign_up_params += [:time_zone]
+  config.update_params += [:time_zone]
+end
+```
+
 ### After Login Path
 
 After a user logs in they will be redirected to the stashed location or the root path, by default. When a GET request hits `authenticate_user!`, it will stash the request path in the session and redirect back after login.

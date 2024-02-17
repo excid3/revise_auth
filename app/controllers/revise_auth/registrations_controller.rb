@@ -35,10 +35,10 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
   private
 
   def sign_up_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(ReviseAuth.sign_up_params)
   end
 
   def profile_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(ReviseAuth.update_params)
   end
 end

@@ -2,3 +2,6 @@
 
 Next step:
   Run "rails db:migrate"
+
+To customize views:
+  Run "rails generate revise_auth:views"
