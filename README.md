@@ -33,7 +33,7 @@ $ rails g revise_auth:model
 Optionally, you can add other fields such as `first_name` and `last_name`:
 
 ```bash
-$ rails g revise_auth:model User first_name last_name
+$ rails g revise_auth:model first_name last_name
 ```
 
 And then run:
