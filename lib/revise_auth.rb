@@ -10,6 +10,6 @@ module ReviseAuth
 
   include ActiveSupport::Configurable
 
-  config_accessor :sign_up_params, default: [:name, :email, :password, :password_confirmation]
-  config_accessor :update_params, default: [:name]
+  config_accessor :sign_up_params, default: [:email, :password, :password_confirmation]
+  config_accessor :update_params, default: []
 end
