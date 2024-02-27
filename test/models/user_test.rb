@@ -25,7 +25,7 @@ class UserTest < ActiveSupport::TestCase
     valid_user.password = "a" * (ReviseAuth.minimum_password_length - 1)
     valid_user.valid?
     refute_empty valid_user.errors.where(:password, :too_short)
-    
+
     valid_user.password = "a" * ReviseAuth.minimum_password_length
     valid_user.valid?
     assert_empty valid_user.errors.where(:password, :too_short)
