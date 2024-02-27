@@ -21,7 +21,7 @@ module ReviseAuth
 
       validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
       validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
-      validates_length_of :password, minimum: 12, allow_nil: true
+      validates_length_of :password, minimum: ReviseAuth.minimum_password_length, allow_nil: true
     end
 
     # Generates a confirmation token and send email to the user

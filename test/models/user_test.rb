@@ -19,6 +19,18 @@ class UserTest < ActiveSupport::TestCase
     refute_empty user.errors.where(:password, :blank)
   end
 
+  test "password meets minimum length" do
+    valid_user = User.new(email: "test@example.org")
+
+    valid_user.password = "a" * (ReviseAuth.minimum_password_length - 1)
+    valid_user.valid?
+    refute_empty valid_user.errors.where(:password, :too_short)
+
+    valid_user.password = "a" * ReviseAuth.minimum_password_length
+    valid_user.valid?
+    assert_empty valid_user.errors.where(:password, :too_short)
+  end
+
   test "email is downcased" do
     user = User.new(email: "TEST@example.org")
     user.valid?

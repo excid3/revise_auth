@@ -140,6 +140,15 @@ authenticated do
 end
 ```
 
+### Password Length
+
+The minimum acceptable password length for validation defaults to 12 characters but this can be configured in either `config/initializers/revise_auth.rb` or your environment configuration:
+```ruby
+ReviseAuth.configure do |config|
+  config.minimum_password_length = 42
+end
+```
+
 ## Contributing
 
 If you have an issue you'd like to submit, please do so using the issue tracker in GitHub. In order for us to help you in the best way possible, please be as detailed as you can.
