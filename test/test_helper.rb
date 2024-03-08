@@ -13,11 +13,6 @@ ActiveSupport::TestCase.fixture_paths << File.expand_path("fixtures", __dir__)
 ActionDispatch::IntegrationTest.fixture_paths << File.expand_path("fixtures", __dir__)
 ActiveSupport::TestCase.fixtures :all
 
-class ActiveSupport::TestCase
-  def login(user, password: "password")
-    post login_path, params: {
-      email: user.email,
-      password: password
-    }
-  end
+class ActionDispatch::IntegrationTest
+  include ReviseAuth::Test::Helpers
 end

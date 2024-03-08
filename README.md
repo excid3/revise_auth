@@ -143,9 +143,44 @@ end
 ### Password Length
 
 The minimum acceptable password length for validation defaults to 12 characters but this can be configured in either `config/initializers/revise_auth.rb` or your environment configuration:
+
 ```ruby
 ReviseAuth.configure do |config|
   config.minimum_password_length = 42
+end
+```
+
+## Test helpers
+
+ReviseAuth comes with handy helpers you can use in your tests:
+
+```ruby
+# POST /login with the given user and password
+login(user, password: "password")
+# DELETE /logout
+logout
+```
+
+Include the `ReviseAuth::Test::Helpers` module to make them available in your tests.
+
+```ruby
+class ActionDispatch::IntegrationTest
+  include ReviseAuth::Test::Helpers
+end
+```
+
+Then in your tests:
+
+```ruby
+class MyControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @user = users(:bob)
+    login @user
+  end
+
+  test "..." do
+    # ...
+  end
 end
 ```
 
