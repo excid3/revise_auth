@@ -20,6 +20,10 @@ module ReviseAuth
         inject_into_class "app/models/user.rb", "User", "  include ReviseAuth::Model\n" if behavior == :invoke
       end
 
+      def add_revise_auth_routes
+        route "revise_auth"
+      end
+
       def copy_initializer
         template "initializer.rb", "config/initializers/revise_auth.rb"
       end

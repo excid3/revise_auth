@@ -53,7 +53,7 @@ You can accomplish this in a few different ways:
 
 ### Routes
 
-Tell your router to add ReviseAuth's controllers:
+The model generator will automatically add ReviseAuth's routes to your router:
 
 ```
 # config/routes.rb
