@@ -70,7 +70,7 @@ module ReviseAuth
     # the controllers defined inside revise_auth. Useful if you want to apply a before
     # filter to all controllers, except the ones in revise_auth:
     #
-    #   before_action :authenticate_user!, except: :revise_auth_controller?
+    #   before_action :authenticate_user!, unless: :revise_auth_controller?
     def revise_auth_controller?
       is_a?(::ReviseAuthController)
     end
