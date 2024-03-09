@@ -18,4 +18,9 @@ class ModelGeneratorTest < Rails::Generators::TestCase
     assert_migration "db/migrate/create_users.rb", /t\.string :last_name/
     assert_migration "db/migrate/create_users.rb", /t\.boolean :admin/
   end
+
+  test "revise_auth is added to config/routes.rb" do
+    run_generator
+    assert_file "config/routes.rb", /revise_auth/
+  end
 end
