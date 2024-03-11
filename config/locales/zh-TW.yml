@@ -60,5 +60,9 @@ zh-TW:
         invalid_email_or_password: 錯誤的信箱或是密碼
       new:
         log_in: Log in
+    shared:
+      links:
+        log_in: Log in
         reset_password: Reset your password
+        sign_up: Sign up
     sign_up_or_login: 需要註冊或是登入才能進行
