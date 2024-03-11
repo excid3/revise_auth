@@ -60,5 +60,9 @@ tr:
         invalid_email_or_password: Geçersiz e-posta veya şifre.
       new:
         log_in: Log in
+    shared:
+      links:
+        log_in: Log in
         reset_password: Reset your password
+        sign_up: Sign up
     sign_up_or_login: Devam etmek için kaydol veya giriş yap.

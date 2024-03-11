@@ -60,5 +60,9 @@ es:
         invalid_email_or_password: Email o contraseña inválidas.
       new:
         log_in: Iniciar sesión
+    shared:
+      links:
+        log_in: Iniciar sesión
         reset_password: Resetear contraseña
+        sign_up: Registrate
     sign_up_or_login: Registrate o inicia sesión para continuar.

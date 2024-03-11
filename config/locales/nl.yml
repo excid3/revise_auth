@@ -60,5 +60,9 @@ nl:
         invalid_email_or_password: Ongeldige e-mail of wachtwoord.
       new:
         log_in: Log in
+    shared:
+      links:
+        log_in: Log in
         reset_password: Reset your password
+        sign_up: Sign up
     sign_up_or_login: Aanmelden of inloggen om door te gaan.

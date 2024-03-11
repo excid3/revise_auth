@@ -60,5 +60,9 @@ el:
         invalid_email_or_password: Μη έγκυρο email ή κωδικός πρόσβασης.
       new:
         log_in: Log in
+    shared:
+      links:
+        log_in: Log in
         reset_password: Reset your password
+        sign_up: Sign up
     sign_up_or_login: Εγγραφείτε ή συνδεθείτε για να συνεχίσετε.
