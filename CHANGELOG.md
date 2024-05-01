@@ -1,5 +1,20 @@
 ### Unrelease
 
+### 0.6.0
+
+* Add revise_auth route when generating model #71
+* Add configurable password length validation #64
+
+### 0.5.0
+
+* Add czech translation by @JakubSchwar in #44
+* remove references to confirmation_token in the model by @kylekeesling in #45
+* Add spanish translations. by @patriciomacadden in #53
+* Fix email confirmation: ReviseAuth::Model#confirm_email_change now clears the unconfirmed email. by @patriciomacadden in #55
+* Fix password reset form by @patriciomacadden in #57
+* Add configurable form params by @excid3 in #61
+* I18n: translate all strings and add i18n-tasks. by @patriciomacadden in #58
+
 ### 0.4.1
 
 * Add `RouteConstraint` examples to README and tests
