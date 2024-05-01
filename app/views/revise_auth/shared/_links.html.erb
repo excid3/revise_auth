@@ -1,0 +1,15 @@
+<% if controller_name == "sessions" %>
+  <div>
+    <%= link_to t(".reset_password"), new_password_reset_path %>
+  </div>
+<% else %>
+  <div>
+    <%= link_to t(".log_in"), login_path %>
+  </div>
+<% end %>
+
+<% if controller_name != "registrations" %>
+  <div>
+    <%= link_to t(".sign_up"), sign_up_path %>
+  </div>
+<% end %>

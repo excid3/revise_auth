@@ -14,8 +14,6 @@
   <div>
     <%= form.button t(".log_in") %>
   </div>
-
-  <div>
-    <%= link_to t(".reset_password"), new_password_reset_path %>
-  </div>
 <% end %>
+
+<%= render "revise_auth/shared/links" %>
