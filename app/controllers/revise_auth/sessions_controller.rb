@@ -22,8 +22,4 @@ class ReviseAuth::SessionsController < ReviseAuthController
   def resolve_after_login_path
     try(:after_login_path) || return_to_location || root_path
   end
-
-  def return_to_location
-    session.delete(:user_return_to)
-  end
 end
