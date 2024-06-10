@@ -17,4 +17,5 @@ module ReviseAuth
   config_accessor :sign_up_params, default: [:email, :password, :password_confirmation]
   config_accessor :update_params, default: []
   config_accessor :minimum_password_length, default: 12
+  config_accessor :rate_limit, default: {to: 5, within: 1.minute, only: :create}
 end

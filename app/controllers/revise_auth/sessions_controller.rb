@@ -1,4 +1,6 @@
 class ReviseAuth::SessionsController < ReviseAuthController
+  rate_limit ReviseAuth.rate_limit if respond_to?(:rate_limit) && ReviseAuth.rate_limit.present?
+
   def new
   end
 
