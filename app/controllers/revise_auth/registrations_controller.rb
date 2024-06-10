@@ -9,7 +9,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
     @user = User.new(sign_up_params)
     if @user.save
       login(@user)
-      redirect_to root_path
+      redirect_to resolve_after_register_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -40,5 +40,9 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
 
   def profile_params
     params.require(:user).permit(ReviseAuth.update_params)
+  end
+
+  def resolve_after_register_path
+    try(:after_register_path) || return_to_location || root_path
   end
 end

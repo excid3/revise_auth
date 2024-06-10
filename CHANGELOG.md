@@ -1,4 +1,6 @@
-### Unrelease
+### Unreleased
+
+* Add `after_register_path` and stored location redirect after successful registration
 
 ### 0.6.0
 
