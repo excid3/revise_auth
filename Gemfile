@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 gem "puma"
-gem "sqlite3"
+gem "sqlite3", "~> 2.0"
 gem "web-console", group: :development
 gem "sprockets-rails"
 gem "importmap-rails"
