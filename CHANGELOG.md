@@ -3,6 +3,7 @@
 ### 0.7.1
 
 * Redirect when already authenticated on new registration & new session.
+* Rate limit new sessions for Rails 7.2+
 
 ### 0.7.0
 
