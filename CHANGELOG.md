@@ -1,5 +1,9 @@
 ### Unreleased
 
+### 0.7.1
+
+* Redirect when already authenticated on new registration & new session.
+
 ### 0.7.0
 
 * Add `after_register_path` and stored location redirect after successful registration
