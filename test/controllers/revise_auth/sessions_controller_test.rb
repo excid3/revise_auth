@@ -42,4 +42,16 @@ class ReviseAuth::SessionsControllerTest < ActionDispatch::IntegrationTest
   ensure
     ::ApplicationController.undef_method(:after_login_path)
   end
+
+  test "redirects if already logged in" do
+    post login_url, params: {email: "bob@bob.com", password: "password"}
+
+    get login_url
+    assert_redirected_to root_path
+    assert_equal I18n.t("revise_auth.shared.already_authenticated"), flash[:alert]
+
+    post login_url, params: {email: "bob@bob.com", password: "password"}
+    assert_redirected_to root_path
+    assert_equal I18n.t("revise_auth.shared.already_authenticated"), flash[:alert]
+  end
 end

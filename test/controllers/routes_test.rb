@@ -20,11 +20,15 @@ class RoutesTest < ActionDispatch::IntegrationTest
     assert_raises ActionController::RoutingError do
       login users(:bob)
       get "/admin"
+    ensure
+      logout
     end
 
     assert_nothing_raised do
       login users(:admin)
       get "/admin"
+    ensure
+      logout
     end
   end
 end

@@ -25,6 +25,10 @@ module ReviseAuth
       redirect_to_login_with_stashed_location unless user_signed_in?
     end
 
+    def require_unauthenticated
+      redirect_to resolve_after_login_path, alert: t("revise_auth.shared.already_authenticated") if user_signed_in?
+    end
+
     # Authenticates the current user
     # - from session cookie
     # - (future) from Authorization header
@@ -61,9 +65,21 @@ module ReviseAuth
       session[:user_return_to] = path
     end
 
+    def return_to_location
+      session.delete(:user_return_to)
+    end
+
     def redirect_to_login_with_stashed_location
       stash_return_to_location(request.fullpath) if request.get?
-      redirect_to login_path, alert: I18n.t("revise_auth.sign_up_or_login")
+      redirect_to login_path, alert: t("revise_auth.sign_up_or_login")
+    end
+
+    def resolve_after_register_path
+      try(:after_register_path) || return_to_location || root_path
+    end
+
+    def resolve_after_login_path
+      try(:after_login_path) || return_to_location || root_path
     end
 
     # Return true if it's a revise_auth_controller. false to all controllers unless

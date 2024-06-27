@@ -1,4 +1,6 @@
 class ReviseAuth::SessionsController < ReviseAuthController
+  before_action :require_unauthenticated, only: [:new, :create]
+
   rate_limit(**ReviseAuth.login_rate_limit) if respond_to?(:rate_limit) && ReviseAuth.login_rate_limit.present?
 
   def new
@@ -17,11 +19,5 @@ class ReviseAuth::SessionsController < ReviseAuthController
   def destroy
     logout
     redirect_to root_path
-  end
-
-  private
-
-  def resolve_after_login_path
-    try(:after_login_path) || return_to_location || root_path
   end
 end

@@ -61,6 +61,7 @@ es:
       new:
         log_in: Iniciar sesión
     shared:
+      already_authenticated: You are already signed in.
       links:
         log_in: Iniciar sesión
         reset_password: Resetear contraseña
