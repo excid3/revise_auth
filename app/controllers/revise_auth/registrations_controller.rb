@@ -1,5 +1,6 @@
 class ReviseAuth::RegistrationsController < ReviseAuthController
   before_action :authenticate_user!, except: [:new, :create]
+  before_action :require_unauthenticated, only: [:new, :create]
 
   def new
     @user = User.new
@@ -40,9 +41,5 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
 
   def profile_params
     params.require(:user).permit(ReviseAuth.update_params)
-  end
-
-  def resolve_after_register_path
-    try(:after_register_path) || return_to_location || root_path
   end
 end
