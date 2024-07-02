@@ -9,6 +9,7 @@ gem "sqlite3", "~> 1.7"
 gem "web-console", group: :development
 gem "sprockets-rails"
 gem "importmap-rails"
+gem "turbo-rails"
 gem "standard"
 gem "appraisal"
 gem "i18n-tasks"
