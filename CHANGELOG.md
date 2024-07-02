@@ -1,5 +1,7 @@
 ### Unreleased
 
+* Add refer gem integration if detected
+
 ### 0.7.0
 
 * Add `after_register_path` and stored location redirect after successful registration

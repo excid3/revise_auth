@@ -9,6 +9,7 @@ class ReviseAuth::RegistrationsController < ReviseAuthController
     @user = User.new(sign_up_params)
     if @user.save
       login(@user)
+      refer(@user) if respond_to?(:refer)
       redirect_to resolve_after_register_path
     else
       render :new, status: :unprocessable_entity
