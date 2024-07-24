@@ -63,6 +63,17 @@ revise_auth
 
 You will want to define a root path. After login (see below), the user will be redirected to the root path.
 
+### Views
+
+ReviseAuth uses the flash to display notices and alerts, so make sure flash messages are rendered by your application:
+
+```erb
+<%# views/layouts/application.html.erb %>
+
+<%= tag.div notice if notice %>
+<%= tag.div alert if alert %>
+```
+
 ### Filters and Helpers
 
 To protect your actions from unauthenticated users, you can use the `authenticate_user!` filter:
