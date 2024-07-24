@@ -9,6 +9,12 @@ module ReviseAuth
       helper_method :current_user
     end
 
+    class_methods do
+      def authenticate_user!(with: :login, return_to: true, **options)
+        before_action -> { authenticate_user!(with: with, return_to: return_to) }, **options
+      end
+    end
+
     # Returns a boolean whether the user is signed in or not
     def user_signed_in?
       !!current_user
@@ -21,8 +27,11 @@ module ReviseAuth
     end
 
     # Authenticates a user or redirects to the login page
-    def authenticate_user!
-      redirect_to_login_with_stashed_location unless user_signed_in?
+    def authenticate_user!(with: :login, return_to: true)
+      return if user_signed_in?
+      stash_return_to_location(request.fullpath) if return_to && request.get?
+      path = (with == :sign_up) ? sign_up_path : login_path
+      redirect_to path, alert: t("revise_auth.sign_up_or_login")
     end
 
     def require_unauthenticated
@@ -67,11 +76,6 @@ module ReviseAuth
 
     def return_to_location
       session.delete(:user_return_to)
-    end
-
-    def redirect_to_login_with_stashed_location
-      stash_return_to_location(request.fullpath) if request.get?
-      redirect_to login_path, alert: t("revise_auth.sign_up_or_login")
     end
 
     def resolve_after_register_path

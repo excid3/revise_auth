@@ -1,5 +1,16 @@
 ### Unreleased
 
+### 0.8.0
+
+* Add `authenticate_user!` class method for controllers.
+  This allows you to choose whether to redirect to login or sign up paths and whether or not to stash the return to location
+
+  ```ruby
+  class SettingsController < ApplicationController
+    authenticate_user! with: :sign_up, return_to: false
+  end
+  ```
+
 ### 0.7.1
 
 * Redirect when already authenticated on new registration & new session.
