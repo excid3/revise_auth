@@ -12,6 +12,6 @@ gem "standard"
 gem "appraisal"
 gem "i18n-tasks"
 gem "debug", ">= 1.0.0"
-gem "rails", "~> 7.1.0.beta1"
+gem "rails", "~> 7.1.0"
 
 gemspec path: "../"
