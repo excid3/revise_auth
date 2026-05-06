@@ -153,9 +153,7 @@ GEM
     marcel (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.6)
-      drb (~> 2.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     mutex_m (0.3.0)
     net-imap (0.6.4)
       date
@@ -327,6 +325,7 @@ DEPENDENCIES
   debug (>= 1.0.0)
   i18n-tasks
   importmap-rails
+  minitest (< 6.0)
   puma
   rails (~> 7.1.0)
   revise_auth!
