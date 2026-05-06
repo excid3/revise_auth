@@ -1,5 +1,9 @@
 ### Unreleased
 
+### 0.8.1
+
+* Remove `ActiveSupport::Configurable` usage #122
+
 ### 0.8.0
 
 * Add `authenticate_user!` class method for controllers.
